@@ -23,9 +23,16 @@ def embed_texts(texts: List[str]) -> List[List[float]]:
 # resembles a prompt-injection attempt so it can be marked untrusted before
 # being spliced into agent prompts as "retrieved knowledge context".
 _INJECTION_MARKERS = [
-    r"ignore (all |the )?(previous|prior|above) instructions",
-    r"disregard (the |all )?(previous|prior|above)",
+    # The override phrasings allow words between the qualifier and the noun. The
+    # original patterns required "prior instructions" adjacent, which meant the
+    # poisoned ticket shipped with this course ("Ignore prior confidentiality
+    # instructions") passed the scan clean — the one document the feature exists to
+    # catch was the one document it missed.
+    r"ignore (all |the |any )?(previous|prior|above|earlier)\b[^.\n]{0,40}?\binstructions",
+    r"disregard (all |the |any )?(previous|prior|above|earlier)\b[^.\n]{0,40}?\b(instructions|rules|policy|guidance)",
     r"\bsystem\s*:\s*",
+    # Fake system framing addressed at the assistant, e.g. "system note to assistant:".
+    r"\bsystem\s+(note|message|prompt|instruction)\b[^:\n]{0,40}:",
     r"you are now\b",
     r"new instructions\s*:",
     r"\bact as\b.{0,30}\b(admin|root|system|developer)\b",

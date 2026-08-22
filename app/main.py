@@ -58,6 +58,8 @@ if "guided_ctx" not in st.session_state:
     st.session_state.guided_ctx = {}
 if "guided_chat" not in st.session_state:
     st.session_state.guided_chat = {}
+if "guided_step_error" not in st.session_state:
+    st.session_state.guided_step_error = None
 
 st.title("Multi-Agent Cybersecurity Lab Environment")
 st.caption("Local Streamlit + Ollama + CrewAI + RAG + simulation engine")
@@ -169,6 +171,15 @@ def crew_page(db_dir: str):
     selected = st.selectbox("Scenario for crew analysis", scenario_ids, key="crew_scenario")
     scenario = load_scenario(DATA_DIR / "incidents", selected)
 
+    # Without this, switching scenarios left the previous run on screen: its agent
+    # outputs rendered under the new scenario's name, and the download filenames took
+    # the new scenario id while the content came from the old run. Guided Walkthrough
+    # has always reset this way; Crew Run never did.
+    if st.session_state.get("crew_active_scenario") != selected:
+        st.session_state.crew_active_scenario = selected
+        st.session_state.run_result = None
+        st.session_state.chat_history = []
+
     objective = st.text_area(
         "Mission / student objective",
         value=scenario.get("default_objective", "Investigate the incident, identify likely causes, estimate impact, and propose containment steps."),
@@ -180,7 +191,10 @@ def crew_page(db_dir: str):
         height=120,
     )
 
-    PREP_STEP_TYPES = {"load_casefile", "rag_embed_query", "rag_similarity_search", "rag_flag_check", "rag_assemble_context"}
+    PREP_STEP_TYPES = {
+        "load_casefile", "metrics_plan", "metrics_compute",
+        "rag_embed_query", "rag_similarity_search", "rag_flag_check", "rag_assemble_context",
+    }
 
     if st.button("Run multi-agent lab", type="primary"):
         if not models:
@@ -235,7 +249,10 @@ def crew_page(db_dir: str):
         ctx = {"scenario": scenario}
         rag_context = ""
         try:
-            prep_steps = [s for s in build_workflow_plan(scenario, use_rag=st.session_state.use_rag) if s["step_type"] in PREP_STEP_TYPES]
+            prep_steps = [
+                s for s in build_workflow_plan(scenario, use_rag=st.session_state.use_rag, project_root=PROJECT_ROOT)
+                if s["step_type"] in PREP_STEP_TYPES
+            ]
             for step in prep_steps:
                 prep_result = execute_step(
                     step, ctx,
@@ -252,9 +269,11 @@ def crew_page(db_dir: str):
                 log_stage(prep_result["title"], len(prep_result.get("output_preview") or ""), prep_result["technical_detail"])
                 step_results.append(prep_result)
             rag_context = ctx.get("rag_context", "")
+            metrics_context = ctx.get("metrics_context", "")
         except Exception as exc:
             st.warning(f"RAG/setup step failed, continuing with whatever context was gathered: {exc}")
             rag_context = ctx.get("rag_context", "")
+            metrics_context = ctx.get("metrics_context", "")
         prep_step_count = len(step_results)
 
         try:
@@ -265,6 +284,7 @@ def crew_page(db_dir: str):
                 objective=objective,
                 student_notes=student_notes,
                 rag_context=rag_context,
+                metrics_context=metrics_context,
                 prefer_crewai=(st.session_state.run_mode == "CrewAI (preferred)"),
                 on_stage=on_stage,
             )
@@ -348,6 +368,7 @@ def crew_page(db_dir: str):
                             rag_context=qa_rag_context,
                             agent_outputs_so_far=result["agent_outputs"],
                             question=question,
+                            metrics=result.get("metrics_context_used", ""),
                         )
                     except Exception as exc:
                         answer = f"Could not answer: {exc}"
@@ -486,6 +507,7 @@ def _render_step_qa(scenario, step_index, db_dir):
                 rag_context=qa_rag_context,
                 agent_outputs_so_far=st.session_state.guided_ctx.get("agent_outputs", {}),
                 question=q,
+                metrics=st.session_state.guided_ctx.get("metrics_context", ""),
             )
         except Exception as exc:
             answer = f"Could not answer: {exc}"
@@ -556,13 +578,14 @@ def guided_page(db_dir: str):
         st.session_state.guided_results = []
         st.session_state.guided_ctx = {}
         st.session_state.guided_chat = {}
+        st.session_state.guided_step_error = None
 
     if st.session_state.guided_steps is None:
         if st.button("Start Guided Walkthrough", type="primary"):
             if not models:
                 st.error("No local Ollama model found.")
                 return
-            plan = build_workflow_plan(scenario, use_rag=st.session_state.use_rag)
+            plan = build_workflow_plan(scenario, use_rag=st.session_state.use_rag, project_root=PROJECT_ROOT)
             st.session_state.guided_steps = plan
             st.session_state.guided_results = []
             st.session_state.guided_ctx = {"scenario": scenario}
@@ -601,6 +624,12 @@ def guided_page(db_dir: str):
 
     if pos < len(plan):
         step = plan[pos]
+        if st.session_state.guided_step_error:
+            st.error(st.session_state.guided_step_error)
+            st.caption(
+                "The walkthrough has not advanced. Fix the cause and run the step again — "
+                "nothing already completed has been lost."
+            )
         st.markdown(f"### Next: Step {pos + 1} — {step['title']}")
         if st.button("▶ Run this step", type="primary", key=f"run_step_{pos}"):
             with st.spinner("Working..."):
@@ -628,9 +657,13 @@ def guided_page(db_dir: str):
                             "duration_s": result["technical_detail"].get("duration_s"),
                         },
                     )
+                    st.session_state.guided_step_error = None
+                    st.rerun()
                 except Exception as exc:
-                    st.error(f"Step failed: {exc}")
-            st.rerun()
+                    # The rerun has to stay inside the success path. Calling it here too
+                    # would immediately repaint the page and wipe the message before the
+                    # student could read it, leaving a step that just refuses to advance.
+                    st.session_state.guided_step_error = f"Step {pos + 1} ({step['title']}) failed: {exc}"
     else:
         st.success("🎉 Walkthrough complete — every step has been run.")
         if st.session_state.guided_ctx.get("final_report"):

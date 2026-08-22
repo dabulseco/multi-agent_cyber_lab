@@ -6,6 +6,16 @@ import time
 from core.ollama_client import generate
 from core.simulation import build_casefile, scenario_artifact_paths
 from core.rag import retrieve, build_context, flag_suspicious_content, embed_texts, get_collection, EMBED_MODEL_NAME
+from core.simulation import available_artifact_tables
+from core.evidence_metrics import (
+    plan_analyses,
+    run_analyses,
+    format_metrics_context,
+    format_metrics_markdown,
+    headline_findings,
+    roles_summary,
+    detect_column_roles,
+)
 from core.crew_orchestrator import (
     AGENT_SPECS,
     _artifact_text,
@@ -27,6 +37,22 @@ STEP_TEMPLATES: Dict[str, Dict[str, str]] = {
                "files ({artifact_names}), truncating each to a fixed character limit so prompts stay a manageable size.",
         "why": "Every downstream agent needs to work from the same shared set of facts — this step establishes the "
                "single source of evidence everyone reasons about.",
+    },
+    "metrics_plan": {
+        "what": "Selected {analyzer_count} deterministic analyses to run over {csv_count} tabular evidence file(s).",
+        "how": "Reads each CSV's column headers and maps them onto analytical roles ({column_roles_summary}), then "
+               "selects every analyzer in a fixed registry whose required columns are present. Selection is "
+               "rule-based — no language model is involved, so the same evidence always produces the same plan.",
+        "why": "Choosing what to measure is itself an analytical act. Making that choice explicit and rule-based "
+               "means it can be audited, argued with, and reproduced — unlike an unstated judgment call.",
+    },
+    "metrics_compute": {
+        "what": "Computed {metric_count} metrics across {rows_analyzed} rows of log evidence.",
+        "how": "Runs fixed, inspectable pandas code (the exact source is shown below) over {csv_names}. Same input, "
+               "same code, same numbers, every run. Headline results: {headline_findings}",
+        "why": "This is where the tool measures instead of describes. Timing regularity, off-hours concentration "
+               "and volume escalation are evidence in their own right — these are those readings as numbers the "
+               "agents cannot quietly round off or contradict without it being visible.",
     },
     "rag_embed_query": {
         "what": "Converted the retrieval query into a numeric vector (embedding).",
@@ -85,14 +111,24 @@ STEP_TEMPLATES: Dict[str, Dict[str, str]] = {
     },
 }
 
-# A note on today's analytical method, appended to any step where the "analysis" is
-# entirely the language model's own reasoning rather than a separate deterministic
-# computation. Kept as one shared string so the phrasing stays consistent everywhere
-# it's used, and so it's trivial to update once a real code-generation step exists.
+# Appended to any step whose analysis is the language model's own reasoning rather
+# than a deterministic computation. Kept as one shared string so the phrasing stays
+# consistent everywhere it is used. Before the deterministic metrics steps existed
+# this text promised them as future work; now that they run earlier in the same
+# workflow, it points at them as something every agent claim can be checked against.
 _LLM_ONLY_METHOD_NOTE = (
-    " This analysis is performed by the language model's own reasoning over the evidence text; no separate "
-    "deterministic computation is applied at this stage. A future version of this tool will pair this kind of "
-    "step with generated, executable analysis code producing measurable, reproducible metrics."
+    " This particular step's analysis is the language model's own reasoning over the evidence text; it is not "
+    "itself a deterministic computation. It does, however, receive the metrics computed earlier in this workflow "
+    "as grounded input. Any statement here about counts, rates, intervals, volumes, or cardinality can therefore "
+    "be checked directly against a measured value — and a claim that contradicts one is a defect worth marking."
+)
+
+# The counterpart note, appended to the steps that genuinely do compute something.
+_DETERMINISTIC_METHOD_NOTE = (
+    " This analysis is a deterministic computation rather than model reasoning: fixed, version-controlled code "
+    "runs over the tabular evidence and returns the same values on every run against the same data. The executed "
+    "source is reproduced above so the calculation can be checked line by line. Note that these metrics describe "
+    "the data; they do not interpret it. Deciding what a number means remains the analyst's judgment."
 )
 
 # Narrative SOP report content per step TYPE — deliberately separate from
@@ -114,6 +150,27 @@ SOP_TEMPLATES: Dict[str, Dict[str, str]] = {
         "connects_to_next": "The casefile and evidence collected here become the foundation every later step "
                              "references — from knowledge-base retrieval through each analyst's investigation and "
                              "the final synthesis.",
+    },
+    "metrics_plan": {
+        "intro": "Log evidence arrives as tables, and tables can be measured rather than merely read. Before any "
+                  "measurement happens, the investigation has to decide what is worth measuring — and record that "
+                  "decision, so a reader can challenge it.",
+        "analysis_method": "Each of the {csv_count} tabular evidence file(s) is inspected and its columns mapped "
+                            "onto analytical roles ({column_roles_summary}). Every analyzer in a fixed registry "
+                            "whose required roles are present is selected, giving {analyzer_count} analyses. The "
+                            "selection depends only on which columns exist, so it is reproducible and reviewable.",
+        "connects_to_next": "The selected analyses are executed in the next step, producing the measured values "
+                             "that every analyst will later reason alongside.",
+    },
+    "metrics_compute": {
+        "intro": "This step produces the investigation's measured facts: the quantities that are true of the "
+                  "evidence regardless of who reads it or which model is running.",
+        "analysis_method": "Fixed pandas analyzers are run over {csv_names}, covering {rows_analyzed} rows and "
+                            "producing {metric_count} metrics. Headline results: {headline_findings}."
+                            + _DETERMINISTIC_METHOD_NOTE,
+        "connects_to_next": "These measurements are injected into every analyst's prompt alongside the retrieved "
+                             "knowledge context, giving each one a set of figures their narrative claims can be "
+                             "checked against.",
     },
     "rag_embed_query": {
         "intro": "Before external knowledge can be retrieved to ground the investigation, the question being asked "
@@ -214,10 +271,22 @@ def render_sop_section(step_type: str, detail: Dict[str, Any]) -> Dict[str, str]
     return {k: v.format_map(safe) for k, v in tmpl.items()}
 
 
-def build_workflow_plan(scenario: dict, use_rag: bool) -> List[Dict[str, str]]:
+def build_workflow_plan(scenario: dict, use_rag: bool, project_root: Optional[Path] = None) -> List[Dict[str, str]]:
+    """Build the ordered step list for this scenario.
+
+    project_root is optional so existing callers keep working; when it is supplied the
+    metrics steps are included only for scenarios that actually ship tabular evidence.
+    Four of the twelve scenarios have no CSV artifacts at all.
+    """
     plan: List[Dict[str, str]] = [
         {"step_id": "load_casefile", "step_type": "load_casefile", "title": "Load scenario casefile and evidence"}
     ]
+    has_tables = bool(available_artifact_tables(project_root, scenario)) if project_root is not None else True
+    if has_tables:
+        plan += [
+            {"step_id": "metrics_plan", "step_type": "metrics_plan", "title": "Select deterministic analyses for the tabular evidence"},
+            {"step_id": "metrics_compute", "step_type": "metrics_compute", "title": "Compute deterministic metrics over the tabular evidence"},
+        ]
     if use_rag:
         plan += [
             {"step_id": "rag_embed_query", "step_type": "rag_embed_query", "title": "Embed the retrieval query"},
@@ -258,6 +327,52 @@ def execute_step(
             "artifact_count": len(paths),
             "artifact_names": ", ".join(p.name for p in paths) or "(none)",
         }
+
+    elif step_type == "metrics_plan":
+        tables = available_artifact_tables(project_root, scenario)
+        specs = plan_analyses(project_root, scenario)
+        ctx["metrics_specs"] = specs
+        roles_by_file = []
+        for path in tables:
+            try:
+                import pandas as _pd
+                roles_by_file.append(f"{path.name}: {roles_summary(detect_column_roles(_pd.read_csv(path, nrows=200)))}")
+            except Exception as exc:
+                roles_by_file.append(f"{path.name}: could not be read ({type(exc).__name__})")
+        detail = {
+            "csv_count": len(tables),
+            "csv_names": ", ".join(p.name for p in tables) or "(none)",
+            "analyzer_count": len(specs),
+            "analyzers": ", ".join(sorted({sp.analyzer for sp in specs})) or "(none)",
+            "column_roles_summary": " | ".join(roles_by_file) or "(no tabular evidence)",
+            "selection_mode": "rule-based (column roles), no model involved",
+        }
+        if not tables:
+            detail["skipped_reason"] = "This scenario has no CSV artifacts, so there is nothing to measure."
+        rows = ["| File | Analyzer | Columns used | Why selected |", "|---|---|---|---|"]
+        for sp in specs:
+            rows.append(f"| {sp.path.name} | {sp.analyzer} | {sp.columns_used} | {sp.reason} |")
+        output_preview = "\n".join(rows) if specs else "_No tabular evidence in this scenario._"
+
+    elif step_type == "metrics_compute":
+        specs = ctx.get("metrics_specs", [])
+        results = run_analyses(project_root, specs)
+        ctx["metrics_results"] = results
+        ctx["metrics_context"] = format_metrics_context(results)
+        ok = [r for r in results if not r.error]
+        detail = {
+            "csv_count": len({r.path for r in results}),
+            "csv_names": ", ".join(sorted({r.path.name for r in results})) or "(none)",
+            "analyzer_count": len(results),
+            "rows_analyzed": sum(r.n_rows for r in {r.path: r for r in ok}.values()),
+            "metric_count": sum(len(r.metrics) for r in ok),
+            "headline_findings": headline_findings(results),
+            "failed_analyzers": ", ".join(f"{r.analyzer}({r.error})" for r in results if r.error) or "none",
+            "metrics_context_chars": len(ctx["metrics_context"]),
+        }
+        if not results:
+            detail["skipped_reason"] = "No analyses were selected, so nothing was computed."
+        output_preview = format_metrics_markdown(results, include_source=True)
 
     elif step_type == "rag_embed_query":
         query = f"{scenario['title']}\n{objective}\n{student_notes}"
@@ -303,12 +418,16 @@ def execute_step(
     elif step_type == "agent_prompt_construct":
         name = step["agent_name"]
         role = AGENT_SPECS[name]
+        metrics_context = ctx.get("metrics_context", "")
         prompt = build_agent_prompt(
             ctx.get("casefile", ""), ctx.get("artifacts_text", ""), ctx.get("rag_context", ""),
-            student_notes, objective, name, role,
+            student_notes, objective, name, role, metrics=metrics_context,
         )
         ctx.setdefault("agent_prompts", {})[name] = prompt
-        detail = {"agent_name": name, "agent_role": role, "prompt_chars": len(prompt)}
+        detail = {
+            "agent_name": name, "agent_role": role, "prompt_chars": len(prompt),
+            "metrics_chars": len(metrics_context),
+        }
         output_preview = prompt
 
     elif step_type == "agent_llm_call":
@@ -323,9 +442,16 @@ def execute_step(
         output_preview = output
 
     elif step_type == "synthesis_prompt_construct":
-        prompt = build_synthesis_prompt(scenario, objective, ctx.get("rag_context", ""), ctx.get("agent_outputs", {}))
+        metrics_context = ctx.get("metrics_context", "")
+        prompt = build_synthesis_prompt(
+            scenario, objective, ctx.get("rag_context", ""), ctx.get("agent_outputs", {}),
+            metrics=metrics_context,
+        )
         ctx["synthesis_prompt"] = prompt
-        detail = {"num_agents": len(ctx.get("agent_outputs", {})), "prompt_chars": len(prompt)}
+        detail = {
+            "num_agents": len(ctx.get("agent_outputs", {})), "prompt_chars": len(prompt),
+            "metrics_chars": len(metrics_context),
+        }
         output_preview = prompt
 
     elif step_type == "synthesis_llm_call":
