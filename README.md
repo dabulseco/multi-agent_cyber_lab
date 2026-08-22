@@ -35,7 +35,7 @@ This project is intentionally **local-first**. It is designed for instructional 
 
 - If `crewai` is available, the app will use a real CrewAI-based orchestration path, running entirely against your local Ollama server (never OpenAI). If CrewAI is not installed or fails mid-run, the app falls back to a built-in sequential orchestrator so the classroom experience still works. CrewAI availability is resolved at import time and reported in the sidebar at startup, so launching from an environment without it is visible *before* a run begins; a warning banner also appears if a run falls back mid-flight. **Guided Walkthrough never uses CrewAI** — it calls Ollama directly — so that page behaves identically either way.
 - Ollama must be installed and running locally. The model picker lists local models first; Ollama Cloud (`:cloud`) models are also shown if your account has access to them, but are not required.
-- CrewAI's telemetry is disabled by default (`CREWAI_TRACING_ENABLED=false` in `.env`, not committed) — no run data leaves the machine.
+- CrewAI's tracing is disabled by default, and its first-run prompt is suppressed, by environment defaults set in `app/core/__init__.py` before CrewAI is imported. This is in code rather than `.env` so a fresh clone behaves correctly with no setup — no run data leaves the machine, and nothing blocks the terminal waiting for an answer. See `.env.example` to override.
 - Uploaded RAG documents **and scenario evidence artifacts** are scanned for language resembling a prompt-injection attempt and flagged in the UI, in retrieved context, and in the agent prompts; this is a teaching signal, not a security guarantee.
 - Metrics over the log evidence are computed by fixed, version-controlled code, never by generating and executing model-authored code. Log files are attacker-influenced evidence in several scenarios, so the analyzers are a closed registry and their source is displayed rather than produced on demand.
 
@@ -108,7 +108,8 @@ Two manuals ship with the lab, each in markdown (for reading online) and Word (f
 
 - Tested against a conda env with `requirements.txt` installed (Python 3.11); see the setup steps above.
 - `requirements.txt` pins exact versions of the direct dependencies to what that env runs, so a fresh clone gets the same stack. Transitive packages are left to resolve normally.
-- `.env` (not committed) should contain `CREWAI_TRACING_ENABLED=false`; `OLLAMA_URL`/`OLLAMA_TIMEOUT_S` are also read from environment if you need to point at a non-default Ollama host.
+- `.env` is optional and not committed; `.env.example` documents every variable. The CrewAI defaults are already applied in code, so you only need `.env` to override something — most often `OLLAMA_URL` or `OLLAMA_TIMEOUT_S` for a non-default Ollama host or slower hardware.
+- Note that `CREWAI_TRACING_ENABLED=false` alone does **not** stop CrewAI's first-run "view your execution traces?" prompt. That prompt has an independent trigger and blocks for 20 seconds per crew kickoff — four kickoffs per Crew Run — on the terminal running the app. `CREWAI_TESTING=true` is what suppresses it; despite the name it gates only that prompt, verified against the pinned `crewai==0.193.2`.
 
 ## Notes on current libraries
 
