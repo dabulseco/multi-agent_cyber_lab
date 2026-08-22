@@ -1,0 +1,10 @@
+HR/IT offboarding notes - employee: t.walker (Systems Administrator)
+
+- Resignation submitted 2026-04-14, last day set as 2026-04-18
+- IT ticket to disable accounts was filed 2026-04-18 at 17:00 but not
+  actioned until 2026-04-21 due to holiday staffing
+- t.walker retained VPN and domain admin access through the gap period
+- Exit interview noted the employee expressed frustration about being
+  passed over for a promotion
+- Standard offboarding checklist was not fully completed: shared admin
+  credentials were not rotated

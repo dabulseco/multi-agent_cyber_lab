@@ -1,0 +1,16 @@
+diff --git a/requirements.lock b/requirements.lock
+index 4a1c9de..7f2b881 100644
+--- a/requirements.lock
++++ b/requirements.lock
+@@ -12,7 +12,7 @@
+ requests==2.32.3
+-reportgen-utils==1.4.2
++reportgen-utils==1.4.3
+ pandas==2.2.2
+
+Notes from dependency bot PR #881 (auto-merged, not manually reviewed):
+- reportgen-utils 1.4.3 was published 6 hours before this PR was opened
+- Publisher account changed from original maintainer to a new contributor
+  account two releases ago
+- Package includes a post-install script (setup.py) that was not present
+  in 1.4.2

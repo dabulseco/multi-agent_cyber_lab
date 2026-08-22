@@ -1,0 +1,31 @@
+{
+  "id": "ot_ics_exposure",
+  "title": "OT/ICS Network Segmentation Exposure",
+  "summary": "A leftover firewall rule from a vendor maintenance visit left a path open from the corporate IT network into the plant's OT historian server for eleven days.",
+  "learning_goals": [
+    "Identify IT/OT segmentation failures and their root causes",
+    "Weigh safety-versus-security tradeoffs specific to operational technology",
+    "Distinguish confirmed unauthorized control actions from unexplained but benign access"
+  ],
+  "initial_situation": "OT security review finds a corporate workstation had repeated access to the plant historian server through a firewall rule that should have been closed after a vendor visit.",
+  "injects": [
+    {
+      "time": "08:10",
+      "message": "The engineer on shift confirms no PLC setpoint changes occurred and production values stayed normal throughout the window."
+    },
+    {
+      "time": "08:18",
+      "message": "The vendor advisory notes similar leftover access has contributed to incidents elsewhere, though usually without unauthorized control commands."
+    },
+    {
+      "time": "08:25",
+      "message": "Plant management asks whether production needs to be halted while this is investigated."
+    }
+  ],
+  "artifacts": [
+    "data/evidence/ot_network_flow_notes.txt",
+    "data/evidence/vendor_security_advisory.txt",
+    "data/evidence/engineer_incident_notes.txt"
+  ],
+  "default_objective": "Assess whether the evidence indicates unauthorized control system access occurred, weigh the operational safety tradeoffs of any containment action, and recommend both immediate and longer-term segmentation fixes."
+}

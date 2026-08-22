@@ -1,0 +1,12 @@
+IT incident notes - internal support assistant data disclosure
+
+- Assistant is grounded via retrieval over the support ticket queue,
+  including ticket bodies submitted by unauthenticated external requesters
+- No instruction was ever issued distinguishing "trusted system instructions"
+  from "untrusted retrieved ticket content" in the assistant's prompt design
+- The assistant treated an instruction embedded inside ticket #8842's body
+  as if it were a legitimate system-level authorization
+- Contact list and recovery codes returned are confirmed sensitive; recipient
+  identity of the original requester is not yet confirmed
+- No prior incidents of this kind have been identified in a two-week log
+  review, but log retention for chatbot sessions is limited to 14 days

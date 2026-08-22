@@ -1,0 +1,10 @@
+Installed app permissions review - dev-8841 (agarcia, personal device, BYOD)
+
+- corp-mail: contacts, calendar, notifications (expected)
+- corp-vpn: VPN configuration, network access (expected)
+- "QuickFlash Scanner" (sideloaded, blocked by MDM before install completed):
+  requested camera, contacts, SMS read, accessibility service
+- Device is not enrolled in full MDM management (BYOD limited profile only),
+  so IT visibility into non-corporate apps is limited to what MDM reports
+- No corporate data confirmed accessed outside the corp-mail and corp-vpn
+  sandboxed apps at this time

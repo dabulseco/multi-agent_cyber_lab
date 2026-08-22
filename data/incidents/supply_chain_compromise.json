@@ -1,0 +1,31 @@
+{
+  "id": "supply_chain_compromise",
+  "title": "Software Supply Chain Compromise",
+  "summary": "A routine dependency update pulled in a package version published from a compromised maintainer account, and the vendor has now disclosed the incident.",
+  "learning_goals": [
+    "Reason about trust boundaries introduced by transitive dependencies",
+    "Distinguish a vulnerable dependency being present from confirmed exploitation in this environment",
+    "Explain why exposure and compromise require different evidence and different responses"
+  ],
+  "initial_situation": "The security team receives a vendor disclosure that reportgen-utils 1.4.3, installed during a recent CI build, contained a malicious post-install script.",
+  "injects": [
+    {
+      "time": "10:00",
+      "message": "CI logs confirm 1.4.3 was installed during build #5521 and the post-install script executed a network callback."
+    },
+    {
+      "time": "10:08",
+      "message": "The vendor advisory states impact is confirmed in only a subset of reported cases, not all installations."
+    },
+    {
+      "time": "10:15",
+      "message": "Engineering asks whether production was affected and whether this needs to be reported as a breach."
+    }
+  ],
+  "artifacts": [
+    "data/evidence/dependency_diff.txt",
+    "data/evidence/build_log_excerpt.txt",
+    "data/evidence/vendor_disclosure_email.txt"
+  ],
+  "default_objective": "Determine what the build evidence confirms versus merely suggests about exploitation, and recommend investigation and remediation steps proportionate to the actual evidence."
+}

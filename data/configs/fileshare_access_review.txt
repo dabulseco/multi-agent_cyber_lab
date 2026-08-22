@@ -1,0 +1,4 @@
+Fileshare permissions review:
+- finance.svc account retains broad export rights
+- service account password last rotated 11 months ago
+- download quotas disabled for reporting share

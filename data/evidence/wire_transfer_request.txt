@@ -1,0 +1,12 @@
+Wire Transfer Request Form (internal AP record)
+
+Invoice reference: INV-4471
+Vendor: Northfield Partners
+Requested by: d.reyes@northf1eld-partners.com (per email, not verified by phone)
+New account: routing 021000021, account ending 8842
+Amount: $48,750.00
+Processed by: ap-clerk (jmartin)
+Processed time: 2026-04-09T15:52:00Z
+Note: Vendor's usual contact normally emails from northfield-partners.com;
+this request came from a similar-looking domain. No callback verification
+was performed before processing due to the stated end-of-day deadline.

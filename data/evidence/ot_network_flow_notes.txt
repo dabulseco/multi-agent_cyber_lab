@@ -1,0 +1,11 @@
+OT/IT network flow notes - plant network monitoring
+
+- Firewall between corporate IT VLAN and OT VLAN (segment 10.40.0.0/16)
+  logged repeated connections from a corporate workstation (10.5.30.18)
+  to the OT historian server (10.40.2.5) starting 03:10
+- These connections used a protocol normally only used by the vendor's
+  maintenance laptop, not general corporate workstations
+- The firewall rule allowing this path was added 11 days ago for a vendor
+  maintenance visit and was never removed afterward
+- No connections observed reaching PLC controllers directly from IT; all
+  observed traffic terminated at the historian server

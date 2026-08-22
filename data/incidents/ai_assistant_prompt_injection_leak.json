@@ -1,0 +1,31 @@
+{
+  "id": "ai_assistant_prompt_injection_leak",
+  "title": "Internal AI Assistant Prompt-Injection Data Leak",
+  "summary": "An internal support chatbot, grounded via retrieval over the support ticket queue, is manipulated by an instruction embedded in a submitted ticket into disclosing an internal contact list and account recovery codes.",
+  "learning_goals": [
+    "Recognize prompt injection carried through retrieved content rather than direct user input",
+    "Evaluate whether an AI system properly separated trusted instructions from untrusted evidence",
+    "Reason about another AI system's design flaws as a third-party reviewer"
+  ],
+  "initial_situation": "A log review discovers that the internal support assistant disclosed sensitive internal data during a session linked to ticket #8842, based on an instruction embedded inside the ticket body.",
+  "injects": [
+    {
+      "time": "11:00",
+      "message": "IT confirms no authentication step actually occurred in the flagged session, despite the assistant's response claiming a verified administrator."
+    },
+    {
+      "time": "11:08",
+      "message": "A review shows the assistant's prompt design never distinguished trusted instructions from retrieved, untrusted ticket content."
+    },
+    {
+      "time": "11:15",
+      "message": "Leadership asks whether this is an isolated incident or a systemic design flaw likely to recur."
+    }
+  ],
+  "artifacts": [
+    "data/evidence/poisoned_support_ticket.txt",
+    "data/evidence/chatbot_transcript.txt",
+    "data/evidence/it_incident_notes.txt"
+  ],
+  "default_objective": "Explain how the injected instruction bypassed the assistant's intended behavior, assess whether this is a one-off or a systemic design flaw, and recommend concrete fixes to the assistant's trust boundaries."
+}

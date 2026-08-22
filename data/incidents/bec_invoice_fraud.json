@@ -1,0 +1,30 @@
+{
+  "id": "bec_invoice_fraud",
+  "title": "Business Email Compromise and Invoice Fraud",
+  "summary": "Accounts payable processes a wire transfer to updated bank details after receiving an urgent email from a familiar vendor contact, only to have the real vendor later ask why an invoice remains unpaid.",
+  "learning_goals": [
+    "Analyze sender domains and headers for lookalike-domain spoofing",
+    "Identify social-engineering pressure tactics such as urgency and authority",
+    "Separate the human process failure from the technical delivery mechanism"
+  ],
+  "initial_situation": "Accounts payable processed a $48,750 wire transfer based on an email requesting updated bank details for vendor Northfield Partners.",
+  "injects": [
+    {
+      "time": "16:05",
+      "message": "The real Northfield Partners contact emails asking why invoice INV-4471 is still marked unpaid."
+    },
+    {
+      "time": "16:12",
+      "message": "AP confirms the original request came in under time pressure and was not verified by phone."
+    },
+    {
+      "time": "16:20",
+      "message": "Finance asks whether the funds can still be recovered and how this was allowed to happen."
+    }
+  ],
+  "artifacts": [
+    "data/phishing/bec_spoofed_email.txt",
+    "data/evidence/wire_transfer_request.txt"
+  ],
+  "default_objective": "Determine how the fraudulent request bypassed normal verification, identify the specific spoofing indicator involved, and recommend both immediate recovery steps and process controls."
+}

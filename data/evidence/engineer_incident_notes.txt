@@ -1,0 +1,11 @@
+Control systems engineer notes - shift handover, 2026-05-15
+
+- Noticed historian server showing higher-than-normal read activity
+  overnight, did not initially flag as unusual since maintenance window
+  was recently open
+- No unexpected PLC setpoint changes observed on the line during this
+  shift; production values remained within normal range
+- Reviewed HMI write logs manually; no write commands from unrecognized
+  sources during the window in question
+- Recommend closing the leftover maintenance firewall rule regardless,
+  since it should not still be open

@@ -1,0 +1,30 @@
+{
+  "id": "ransomware_deployment_extortion",
+  "title": "Ransomware Deployment and Extortion",
+  "summary": "Multiple file servers become unreachable overnight and a ransom note appears on shared drives. Backup jobs also show unexpected activity.",
+  "learning_goals": [
+    "Sequence initial access, lateral movement, and encryption impact from log evidence",
+    "Recognize double-extortion (data theft plus encryption) versus encryption alone",
+    "Separate immediate containment actions from root-cause investigation"
+  ],
+  "initial_situation": "At 06:10, the overnight operations team finds several file servers unresponsive and a ransom note left on the finance and backup shares.",
+  "injects": [
+    {
+      "time": "06:15",
+      "message": "IT confirms backup jobs failed overnight and the backup account was used from an unfamiliar host."
+    },
+    {
+      "time": "06:22",
+      "message": "The ransom note claims data was copied out before encryption began."
+    },
+    {
+      "time": "06:30",
+      "message": "Leadership asks whether to pay, and whether law enforcement should be contacted first."
+    }
+  ],
+  "artifacts": [
+    "data/logs/auth_log_ransomware_lab.csv",
+    "data/evidence/ransom_note.txt"
+  ],
+  "default_objective": "Reconstruct the intrusion timeline from initial access through encryption, assess whether data theft is confirmed or only claimed, and recommend immediate containment steps."
+}

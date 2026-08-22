@@ -1,0 +1,30 @@
+{
+  "id": "insider_sabotage",
+  "title": "Insider Sabotage by a Departing Administrator",
+  "summary": "A former systems administrator's access was not revoked promptly after resignation, and backup jobs were deleted using a newly created service account during the gap.",
+  "learning_goals": [
+    "Identify privileged-access review and offboarding process gaps",
+    "Distinguish malicious sabotage from an honest configuration mistake",
+    "Prioritize access revocation as the primary immediate control"
+  ],
+  "initial_situation": "Overnight backup jobs fail, and logs show a new service account was created and used to delete backup jobs shortly after a departed administrator's VPN session.",
+  "injects": [
+    {
+      "time": "07:30",
+      "message": "IT confirms t.walker's access was still active three days after their last day due to a delayed offboarding ticket."
+    },
+    {
+      "time": "07:38",
+      "message": "The new service account svc-backup-temp was created and used within minutes of t.walker's login, then never used again."
+    },
+    {
+      "time": "07:45",
+      "message": "Leadership asks whether this was intentional sabotage or a mistake during a rushed handover."
+    }
+  ],
+  "artifacts": [
+    "data/evidence/offboarding_notes.txt",
+    "data/logs/auth_log_sabotage.csv"
+  ],
+  "default_objective": "Reconstruct the access and account-creation timeline, evaluate whether the evidence supports intentional sabotage versus an innocent explanation, and recommend immediate access-control remediation."
+}

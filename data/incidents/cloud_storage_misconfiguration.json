@@ -1,0 +1,30 @@
+{
+  "id": "cloud_storage_misconfiguration",
+  "title": "Cloud Storage Bucket Misconfiguration",
+  "summary": "A routine review finds that a cloud storage bucket was briefly configured for public read access, and the audit log shows anonymous requests during that window.",
+  "learning_goals": [
+    "Apply the shared-responsibility model to a cloud misconfiguration",
+    "Distinguish evidence of possible exposure from evidence of confirmed data exfiltration",
+    "Recommend proportionate response given genuinely incomplete evidence"
+  ],
+  "initial_situation": "A quarterly access review finds that reports-bucket allowed public read access for several hours and that anonymous requests occurred during that window.",
+  "injects": [
+    {
+      "time": "09:00",
+      "message": "Security team confirms the public ACL was live for roughly seven hours before being reverted."
+    },
+    {
+      "time": "09:10",
+      "message": "The audit log shows anonymous GetObject and ListBucket calls, but no unusually large transfer volumes are recorded."
+    },
+    {
+      "time": "09:25",
+      "message": "Leadership asks whether this must be reported as a confirmed data breach."
+    }
+  ],
+  "artifacts": [
+    "data/logs/cloud_audit_log.csv",
+    "data/configs/bucket_policy_notes.txt"
+  ],
+  "default_objective": "Determine what the audit log does and does not confirm about data exposure, and recommend next steps and reporting obligations based only on the evidence available."
+}

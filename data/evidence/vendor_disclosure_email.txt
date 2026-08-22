@@ -1,0 +1,16 @@
+From: security@reportgen-utils-project.org
+To: security-notifications@campus.edu
+Subject: Security advisory - reportgen-utils 1.4.3 maintainer account compromise
+
+We are disclosing that the maintainer account used to publish reportgen-utils
+1.4.3 was compromised. The release included an unauthorized post-install
+script that contacts an external host during installation.
+
+Versions affected: 1.4.3 only
+Versions safe: 1.4.2 and earlier, 1.4.4 and later (patched)
+Known impact: the post-install script has been confirmed to perform network
+callbacks in a subset of reported cases; we have not yet confirmed what data,
+if any, is transmitted by the callback.
+
+We recommend auditing any environment that installed 1.4.3 during the
+affected window and upgrading immediately.

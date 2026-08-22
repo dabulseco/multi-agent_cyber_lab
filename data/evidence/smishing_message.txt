@@ -1,0 +1,11 @@
+SMS received by agarcia (personal device), 2026-05-10 14:05
+
+From: +1 (555) 019-2231
+"Campus IT: Your mailbox storage is full and email delivery will stop
+today. Verify your account now to avoid interruption:
+hxxp://campus-mail-verify.net/login
+Reply STOP to opt out."
+
+Note from user: clicked the link out of concern about missing email, entered
+campus credentials on the page, realized afterward the domain was not a
+campus.edu address.

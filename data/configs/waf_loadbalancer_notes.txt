@@ -1,0 +1,9 @@
+WAF / load balancer notes:
+- Traffic to www.campus.edu increased roughly 6x starting 13:57, coinciding
+  with a scheduled admissions-deadline email sent to prospective students
+- Requests originate from a wide range of source IPs and geos, consistent
+  with normal visitor distribution, not a small botnet cluster
+- Some requests are timing out (503) under the increased load; no single
+  URI is being hit disproportionately compared to normal traffic patterns
+- Marketing confirms an email blast was scheduled for this exact time window
+- No rate-limiting or bot-challenge rules have been triggered by the WAF

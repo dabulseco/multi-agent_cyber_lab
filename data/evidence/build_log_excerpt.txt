@@ -1,0 +1,13 @@
+Build log excerpt - CI pipeline run #5521
+
+[12:03:01] Installing dependencies from requirements.lock
+[12:03:04] Collecting reportgen-utils==1.4.3
+[12:03:05] Running setup.py install for reportgen-utils
+[12:03:05]   post-install: contacting update.reportgen-cdn.net for asset sync
+[12:03:06]   post-install: asset sync completed (204 bytes)
+[12:03:09] Build succeeded, artifact published to internal registry
+[12:03:10] Deployment to staging skipped (feature flag disabled)
+
+Note: the post-install network call is unusual for this package family, but
+no build failure occurred and no anomalous outbound traffic was flagged by
+the CI network monitor at this volume.

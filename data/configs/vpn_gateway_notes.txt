@@ -1,0 +1,4 @@
+VPN gateway note:
+- MFA optional for legacy users during transition week
+- Geo-blocking temporarily disabled to reduce lockouts for traveling staff
+- Emergency bypass account exists for support use

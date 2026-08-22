@@ -1,0 +1,10 @@
+From: security@plantcontrol-vendor.com
+To: ot-security@campus.edu
+Subject: Advisory - maintenance access should be time-limited
+
+We recommend all customers review firewall rules added for vendor
+maintenance visits and ensure they are removed once the visit concludes.
+Persistent maintenance-protocol access from general IT networks into the
+OT historian has been identified as a contributing factor in several
+customer incidents this year, though in most cases no unauthorized control
+commands were issued.

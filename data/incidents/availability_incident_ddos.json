@@ -1,0 +1,30 @@
+{
+  "id": "availability_incident_ddos",
+  "title": "Traffic Spike: Possible DDoS or Legitimate Surge",
+  "summary": "The admissions website begins returning intermittent errors during a sudden traffic increase, and the on-call team must decide whether this is an attack or a legitimate surge.",
+  "learning_goals": [
+    "Evaluate whether traffic evidence supports an attack hypothesis or a benign explanation",
+    "Make service-prioritization decisions under time pressure with incomplete certainty",
+    "Practice stating that evidence is inconclusive rather than defaulting to a confident conclusion"
+  ],
+  "initial_situation": "At 13:59, monitoring alerts fire for elevated error rates on www.campus.edu during a sharp increase in inbound traffic.",
+  "injects": [
+    {
+      "time": "14:00",
+      "message": "On-call engineer asks whether this should be treated as a DDoS attack and mitigated with aggressive rate limiting."
+    },
+    {
+      "time": "14:03",
+      "message": "Marketing mentions an admissions-deadline email campaign was scheduled for the same time window."
+    },
+    {
+      "time": "14:07",
+      "message": "Leadership asks for a same-hour decision: block traffic aggressively, or scale up capacity and monitor."
+    }
+  ],
+  "artifacts": [
+    "data/logs/web_log_traffic_spike.csv",
+    "data/configs/waf_loadbalancer_notes.txt"
+  ],
+  "default_objective": "Assess whether the traffic pattern is more consistent with a DDoS attack or a legitimate marketing-driven surge, and recommend a response that matches the actual level of certainty in the evidence."
+}

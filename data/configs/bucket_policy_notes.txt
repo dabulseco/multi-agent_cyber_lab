@@ -1,0 +1,7 @@
+Cloud storage bucket policy notes - reports-bucket:
+- Bucket ACL was changed to allow public read access on 2026-04-02 during a
+  dashboard migration; change was reverted the same day at 05:41 by jsmith
+- Bucket contains quarterly summary reports and a static index page, not raw
+  customer records (those live in a separate, private bucket)
+- No bucket versioning or object-level access logging beyond the account audit log
+- Security team was not notified of the ACL change until a routine review

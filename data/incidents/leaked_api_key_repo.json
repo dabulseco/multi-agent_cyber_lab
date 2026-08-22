@@ -1,0 +1,31 @@
+{
+  "id": "leaked_api_key_repo",
+  "title": "Leaked Cloud API Key in a Public Repository",
+  "summary": "An intern accidentally commits a live cloud API key to a public GitHub repository, and anomalous compute usage appears in the billing dashboard shortly after.",
+  "learning_goals": [
+    "Apply secret-scanning and credential-hygiene practices to a real leak",
+    "Assess blast radius by reasoning about what the leaked key could actually access",
+    "Treat rapid rotation as the primary response action rather than only cleanup"
+  ],
+  "initial_situation": "GitHub's secret scanning alert fires three minutes after a cloud API key is committed to a public repository, and unusual compute usage appears in the billing account within about twenty minutes.",
+  "injects": [
+    {
+      "time": "10:00",
+      "message": "Billing shows compute usage spinning up in regions the organization has never used before."
+    },
+    {
+      "time": "10:10",
+      "message": "The on-call engineer confirms the key found in the commit is still active and was not yet revoked."
+    },
+    {
+      "time": "10:20",
+      "message": "Management asks how much this incident is going to cost and whether more keys may be exposed elsewhere in the repository history."
+    }
+  ],
+  "artifacts": [
+    "data/evidence/github_commit_diff.txt",
+    "data/evidence/cloud_billing_anomaly.csv",
+    "data/evidence/key_revocation_timeline.txt"
+  ],
+  "default_objective": "Assess the blast radius of the leaked key using the billing evidence, evaluate the response-time gap before revocation, and recommend both immediate and preventive controls."
+}

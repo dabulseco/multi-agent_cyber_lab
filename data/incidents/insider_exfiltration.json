@@ -1,0 +1,30 @@
+{
+  "id": "insider_exfiltration",
+  "title": "Possible Insider Data Exfiltration",
+  "summary": "Outbound traffic from a finance host increased sharply late in the day, and a service account appears to retain excessive permissions.",
+  "learning_goals": [
+    "Analyze egress anomalies",
+    "Compare insider-threat and external-compromise hypotheses",
+    "Propose evidence-driven next steps instead of assuming motive"
+  ],
+  "initial_situation": "The network team flags repeated high-volume outbound transfers from a finance reporting host.",
+  "injects": [
+    {
+      "time": "16:20",
+      "message": "Manager asks whether an employee intentionally exported records."
+    },
+    {
+      "time": "16:24",
+      "message": "Analyst notes the transfers used HTTPS to an unfamiliar destination."
+    },
+    {
+      "time": "16:32",
+      "message": "A broad service account was used during the transfer window."
+    }
+  ],
+  "artifacts": [
+    "data/logs/egress_exfiltration.csv",
+    "data/configs/fileshare_access_review.txt"
+  ],
+  "default_objective": "Assess the most plausible explanations for the outbound transfers, identify missing evidence, and recommend containment and review actions."
+}

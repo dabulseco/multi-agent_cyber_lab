@@ -1,0 +1,31 @@
+{
+  "id": "mobile_byod_compromise",
+  "title": "BYOD Smishing and Attempted App Sideload",
+  "summary": "An employee's personal phone receives a smishing message impersonating IT, and shortly after, the device attempts to sideload a suspicious app that is blocked by mobile device management.",
+  "learning_goals": [
+    "Assess BYOD risk surface and the limits of MDM telemetry on personal devices",
+    "Recognize privacy and legal boundaries when investigating a personal device",
+    "Work with weaker evidence quality than a fully managed endpoint provides"
+  ],
+  "initial_situation": "MDM alerts on a blocked sideload attempt on agarcia's personal phone shortly after the user reports clicking a suspicious text message link.",
+  "injects": [
+    {
+      "time": "14:20",
+      "message": "The user reports entering their campus credentials on a link from a text message before realizing the domain looked wrong."
+    },
+    {
+      "time": "14:25",
+      "message": "MDM shows a sideload attempt for an app requesting SMS and accessibility permissions, which was blocked."
+    },
+    {
+      "time": "14:35",
+      "message": "The user asks whether IT can just remotely wipe their personal phone to be safe."
+    }
+  ],
+  "artifacts": [
+    "data/evidence/mdm_enrollment_log.csv",
+    "data/evidence/smishing_message.txt",
+    "data/evidence/app_permissions_list.txt"
+  ],
+  "default_objective": "Assess what corporate exposure, if any, resulted from the credential entry and blocked sideload attempt, and recommend response steps that respect the limits of visibility into a personal device."
+}

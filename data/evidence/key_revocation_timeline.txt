@@ -1,0 +1,13 @@
+Key revocation timeline - AKIA_EXAMPLE_KEY_7f3d9c2b1a8e4f6d
+
+09:41 - Key committed to public repository (scripts/push_report.py)
+09:44 - GitHub secret scanning alert received by security team
+09:52 - On-call engineer begins investigating, confirms key is live
+10:05 - Anomalous compute usage begins appearing in billing data,
+        originating from regions the organization does not normally use
+11:10 - Key revoked and rotated
+11:15 - New compute instances spun up under the leaked key are terminated
+11:30 - Commit history scrubbed and force-pushed; repository made private
+
+Note: usage between 09:44 (alert received) and 11:10 (key revoked)
+represents the response-time gap during which the key remained valid.
