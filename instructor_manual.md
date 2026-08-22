@@ -28,7 +28,8 @@ The platform consists of seven integrated components:
 | CrewAI | Multi-agent orchestration for the Crew Run page. Optional — the app falls back to a built-in sequential orchestrator if it is unavailable. |
 | ChromaDB | Local vector database for RAG retrieval, persisted to .chromadb/ in the project root. Embeddings are produced by Ollama, not by a separate ML library. |
 | Simulation engine (core/simulation.py) | Loads scenario definitions, artifact paths, and preview rendering. |
-| Guided workflow engine (core/guided_workflow.py) | Breaks a run into 11–15 inspectable steps, and renders the workflow document and SOP report. |
+| Guided workflow engine (core/guided_workflow.py) | Breaks a run into 11–17 inspectable steps, and renders the workflow document and SOP report. |
+| Evidence metrics (core/evidence_metrics.py) | A fixed registry of pandas analyzers that compute timing regularity, off-hours share, outcome rates, volume escalation and entity cardinality over the CSV evidence. |
 | Interaction log (core/interaction_log.py) | Append-only local record of every step completion and student question, written to logs/interactions.jsonl. |
 
 ### 1.2 The Four Agents
@@ -49,7 +50,7 @@ The same underlying pipeline is exposed through two pages with different classro
 |   | Crew Run | Guided Walkthrough |
 |---|---|---|
 | Pace | Continuous. Each agent's findings appear the moment that agent finishes. | Paused after every step. The student clicks to advance. |
-| Granularity | Five stages: four agents plus synthesis. | 11–15 steps, including RAG embedding, similarity search, injection scanning, context assembly, and every prompt construction. |
+| Granularity | Five stages: four agents plus synthesis. | 11–17 steps, including deterministic metric computation over the log evidence, RAG embedding, similarity search, injection scanning, context assembly, and every prompt construction. |
 | Teaching material | Technical detail per stage in an expander. | A what / how / why card plus a real technical readout for every step. |
 | Orchestration | CrewAI when available, sequential fallback otherwise. | Always calls Ollama directly. CrewAI is not involved. |
 | Best for | Live demonstration, second and third runs, assessment. | First exposure, explaining how RAG and agent prompting actually work. |
@@ -569,6 +570,7 @@ The four required critique questions and what strong answers look like:
 | Which findings were strongly evidence-supported? | Cites a specific log row or artifact line. Names the agent. Explains why the evidence directly supports the claim. |
 | Which findings were weakly supported or inferred? | Names at least two inferences presented as facts. Explains what evidence would be needed to confirm them. |
 | Which agent was most cautious? | Goes beyond “the Security Reviewer.” Compares hedging language across agents with examples. May identify a surprising second choice. |
+| Did any agent contradict a measured metric? | Names a specific claim and the metric it conflicts with. Notes whether the final synthesis caught the contradiction or repeated it. |
 | What would you verify next? | Proposes concrete investigative steps. Specifies what system, log, or artifact to query. Does not propose generic steps like “check more logs.” |
 
 ### 6.3 Suggested Grading Weights
@@ -651,22 +653,52 @@ The system calls Ollama at http://localhost:11434 unless OLLAMA_URL is set. Rele
 
 ### 8.4 Guided Walkthrough Step Sequence
 
-The walkthrough builds its plan at run time. With RAG enabled it produces 15 steps; with RAG disabled the four retrieval steps are omitted, leaving 11.
+The walkthrough builds its plan at run time. A scenario with tabular evidence and RAG enabled produces 17 steps; without RAG the four retrieval steps are omitted, leaving 13. The four scenarios that ship no CSV artifacts omit the two metrics steps as well, giving 15 and 11.
 
 | # | Step | Type |
 |---|---|---|
 | 1 | Load scenario casefile and evidence | load_casefile |
-| 2 | Embed the retrieval query | rag_embed_query |
-| 3 | Search the knowledge base | rag_similarity_search |
-| 4 | Scan retrieved content for injection signals | rag_flag_check |
-| 5 | Assemble the RAG context block | rag_assemble_context |
-| 6–13 | Construct prompt and run analysis, for each of the four agents in turn | agent_prompt_construct, agent_llm_call |
-| 14 | Construct final synthesis prompt | synthesis_prompt_construct |
-| 15 | Generate final incident report | synthesis_llm_call |
+| 2 | Select deterministic analyses for the tabular evidence | metrics_plan |
+| 3 | Compute deterministic metrics over the tabular evidence | metrics_compute |
+| 4 | Embed the retrieval query | rag_embed_query |
+| 5 | Search the knowledge base | rag_similarity_search |
+| 6 | Scan retrieved content for injection signals | rag_flag_check |
+| 7 | Assemble the RAG context block | rag_assemble_context |
+| 8–15 | Construct prompt and run analysis, for each of the four agents in turn | agent_prompt_construct, agent_llm_call |
+| 16 | Construct final synthesis prompt | synthesis_prompt_construct |
+| 17 | Generate final incident report | synthesis_llm_call |
 
 Each step carries a fixed what / how / why teaching card filled in with the real values captured when that step ran — embedding dimensions, chunk counts, prompt character counts, call durations. The cards require no LLM call, so they are instant and cannot fail mid-demonstration.
 
-### 8.5 Export Formats
+### 8.5 Deterministic Evidence Metrics
+
+Eight of the twelve scenarios ship CSV log evidence. Before any agent reasons about it, a fixed registry of pandas analyzers computes measurements over it, and those measurements are injected into every agent prompt alongside the retrieved context.
+
+| Analyzer | What it measures |
+|---|---|
+| interval_regularity | Mean, median, spread and coefficient of variation of the gaps between events. A CV below 0.05 is machine-regular; above 0.35 is consistent with human jitter. |
+| off_hours_share | Proportion of events outside business hours, with the timezone assumption printed. |
+| outcome_breakdown | Success, failure and action counts; HTTP status buckets; longest failure run. |
+| volume_escalation | Totals, max/min ratio, longest monotonic increase, top contributors by share. |
+| entity_cardinality | Distinct values per categorical column and the unique-to-row ratio. |
+| actor_source_pivot | Per actor: distinct sources and geographies, and the shortest interval between a switch — impossible travel as a measured number. |
+| client_tooling | Share of non-browser user agents. A heuristic, and labelled as one. |
+
+No model-generated code is executed. Selection is rule-based, driven by mapping each CSV's columns onto analytical roles, and the executed source of every analyzer is displayed to students in the step output so the calculation can be checked line by line. Values are reproducible: the same file and the same code return the same numbers on every run.
+
+Agents are instructed to cite measured numbers and to state explicitly when their reading of the raw evidence disagrees with one. This is a gradeable critique target — see the rubric note in section 6.2.
+
+> **⚠️  Sample size:** Analyzers attach a caveat whenever fewer than five intervals were measured. Several artifacts are small by design, and a coefficient of variation over three intervals describes that sample rather than any stable pattern. Point students at the caveat rather than letting them quote the number bare.
+
+### 8.6 Two Teaching Traps in the Measured Data
+
+Both are deliberate and both reward the habit this course is built around — refusing to treat a number as a finding until it has been interpreted.
+
+The traffic-spike log (availability_incident_ddos) measures an interval coefficient of variation well above the machine-regular band, with a unique-source-to-row ratio around 0.65. Read carelessly, high unique-IP counts look like a distributed attack. Read with the timing figure, the evidence leans toward a genuine crowd — which is exactly what that scenario's learning goal about inconclusive evidence asks students to articulate.
+
+The cloud billing export (leaked_api_key_repo) measures a coefficient of variation of 0.000 — perfect machine regularity. It is not an attacker. It is the billing meter's own fifteen-minute sampling cadence. A metric without interpretation is not a finding, and this is the cleanest demonstration of that in the whole set.
+
+### 8.7 Export Formats
 
 Each exported run bundle is a JSON file in exports/ with the following fields:
 
@@ -691,7 +723,7 @@ Both Crew Run and Guided Walkthrough additionally offer two rendered documents, 
 | Workflow doc | Every step with its what / how / why card and captured technical detail, with any student questions shown inline under the step where they were asked. |
 | SOP report | The same run rewritten as a narrative standard operating procedure, with each step's purpose, analytical method, findings, and connection to the next step. |
 
-### 8.6 Interaction Log Format
+### 8.8 Interaction Log Format
 
 logs/interactions.jsonl records one JSON object per line. Every record carries a timestamp, session_id, and scenario_id; the remaining fields depend on event_type.
 

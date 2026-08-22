@@ -20,13 +20,14 @@ It lets students and instructors run a local, scenario-based cybersecurity exerc
 The app can:
 1. Load a simulated cybersecurity scenario (12 scenarios spanning phishing/credential theft, insider threats, ransomware, cloud misconfiguration, BEC, supply chain, availability, mobile, OT/ICS, leaked secrets, and AI-specific incidents)
 2. Present supporting artifacts (logs, emails, configs, notes)
-3. Retrieve grounding context from a local knowledge base using RAG
-4. Run a CrewAI workflow over the scenario, revealing each agent's findings live as they complete rather than only at the end (**Crew Run** page — fast, good for live demos)
-5. Or, run a **Guided Walkthrough** — a granular (~11-15 step) breakdown of the entire pipeline (RAG embedding, similarity search, injection-flag checking, context assembly, each agent's prompt construction and LLM call, final synthesis), pausing after every step with a "what / how / why" teaching card and a real technical-detail readout, before the student advances to the next step
-6. Let students ask follow-up questions at any point — grounded in the evidence, RAG-indexed content (including uploaded files), and whatever the crew/walkthrough has found so far — via a chat panel
-7. Produce a final incident report and teaching notes
-8. Export run artifacts for grading. Both **Crew Run** and **Guided Walkthrough** also offer two standalone documents — a *workflow doc* (every step with its technical detail and any questions asked inline) and an *SOP report* (the same run written up as a narrative procedure) — each downloadable as `.md` or `.html`
-9. Log every stage/step completion and every student question/answer to `logs/interactions.jsonl`, viewable in the Instructor Dashboard, so instructors can see what students ask about most — a proxy for where the material is weak
+3. Compute deterministic metrics over the scenario's log evidence — timing regularity, off-hours share, failure rates, volume escalation, entity cardinality — using a fixed registry of pandas analyzers whose source is shown to students, so agent claims about numbers can be checked against measured values
+4. Retrieve grounding context from a local knowledge base using RAG
+5. Run a CrewAI workflow over the scenario, revealing each agent's findings live as they complete rather than only at the end (**Crew Run** page — fast, good for live demos)
+6. Or, run a **Guided Walkthrough** — a granular (~11-17 step) breakdown of the entire pipeline (deterministic metric computation over the log evidence, RAG embedding, similarity search, injection-flag checking, context assembly, each agent's prompt construction and LLM call, final synthesis), pausing after every step with a "what / how / why" teaching card and a real technical-detail readout, before the student advances to the next step
+7. Let students ask follow-up questions at any point — grounded in the evidence, RAG-indexed content (including uploaded files), and whatever the crew/walkthrough has found so far — via a chat panel
+8. Produce a final incident report and teaching notes
+9. Export run artifacts for grading. Both **Crew Run** and **Guided Walkthrough** also offer two standalone documents — a *workflow doc* (every step with its technical detail and any questions asked inline) and an *SOP report* (the same run written up as a narrative procedure) — each downloadable as `.md` or `.html`
+10. Log every stage/step completion and every student question/answer to `logs/interactions.jsonl`, viewable in the Instructor Dashboard, so instructors can see what students ask about most — a proxy for where the material is weak
 
 ## Core design choices
 
@@ -35,7 +36,8 @@ This project is intentionally **local-first**. It is designed for instructional 
 - If `crewai` is available, the app will use a real CrewAI-based orchestration path, running entirely against your local Ollama server (never OpenAI). If CrewAI is not installed or fails mid-run, the app falls back to a built-in sequential orchestrator so the classroom experience still works. CrewAI availability is resolved at import time and reported in the sidebar at startup, so launching from an environment without it is visible *before* a run begins; a warning banner also appears if a run falls back mid-flight. **Guided Walkthrough never uses CrewAI** — it calls Ollama directly — so that page behaves identically either way.
 - Ollama must be installed and running locally. The model picker lists local models first; Ollama Cloud (`:cloud`) models are also shown if your account has access to them, but are not required.
 - CrewAI's telemetry is disabled by default (`CREWAI_TRACING_ENABLED=false` in `.env`, not committed) — no run data leaves the machine.
-- Uploaded RAG documents are scanned for language resembling a prompt-injection attempt and flagged in the UI and in retrieved context; this is a teaching signal, not a security guarantee.
+- Uploaded RAG documents **and scenario evidence artifacts** are scanned for language resembling a prompt-injection attempt and flagged in the UI, in retrieved context, and in the agent prompts; this is a teaching signal, not a security guarantee.
+- Metrics over the log evidence are computed by fixed, version-controlled code, never by generating and executing model-authored code. Log files are attacker-influenced evidence in several scenarios, so the analyzers are a closed registry and their source is displayed rather than produced on demand.
 
 ## Recommended setup
 
@@ -88,6 +90,7 @@ Two manuals ship with the lab, each in markdown (for reading online) and Word (f
 - `app/main.py` — Streamlit interface
 - `app/core/crew_orchestrator.py` — CrewAI + fallback orchestration, live stage callbacks, Q&A
 - `app/core/guided_workflow.py` — step plan, per-step execution, workflow-doc and SOP-report rendering
+- `app/core/evidence_metrics.py` — fixed registry of deterministic pandas analyzers over the CSV evidence
 - `app/core/rag.py` — local retrieval pipeline, upload sanitization, injection flagging
 - `app/core/simulation.py` — scenario and artifact loading
 - `app/core/ollama_client.py` — Ollama HTTP client (generate, chat, embed, healthcheck)
@@ -99,6 +102,7 @@ Two manuals ship with the lab, each in markdown (for reading online) and Word (f
 - `labs/` — lab handouts aligned to the simulation environment
 - `instructor_manual.md` / `student_manual.md` — full course manuals, readable directly on GitHub (`.docx` versions of both are also included for printing and distribution)
 - `.streamlit/config.toml` — disables Streamlit's file watcher (avoids reload churn during long runs)
+- `tools/` — regenerates the manuals (both formats from one content source) and the enlarged log datasets
 
 ## Setup notes
 
