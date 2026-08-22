@@ -1,0 +1,12 @@
+timestamp,principal,src_ip,action,resource,result
+2026-04-02T02:11:04Z,anonymous,203.0.113.55,GetObject,reports-bucket/summary_2025.pdf,ALLOW
+2026-04-02T02:11:09Z,anonymous,203.0.113.55,ListBucket,reports-bucket,ALLOW
+2026-04-02T02:11:22Z,anonymous,203.0.113.55,GetObject,reports-bucket/index.html,ALLOW
+2026-04-02T02:12:01Z,anonymous,198.51.100.9,GetObject,reports-bucket/summary_2025.pdf,ALLOW
+2026-04-02T02:14:47Z,svc-reporting,10.20.4.11,PutObject,reports-bucket/summary_2025.pdf,ALLOW
+2026-04-02T03:02:15Z,anonymous,203.0.113.55,GetObject,reports-bucket/readme.txt,ALLOW
+2026-04-02T05:40:30Z,jsmith,10.20.4.20,GetBucketAcl,reports-bucket,ALLOW
+2026-04-02T05:41:02Z,jsmith,10.20.4.20,PutBucketAcl,reports-bucket,ALLOW
+2026-04-02T09:15:12Z,anonymous,192.0.2.77,GetObject,reports-bucket/summary_2025.pdf,ALLOW
+2026-04-02T11:03:40Z,svc-reporting,10.20.4.11,PutObject,reports-bucket/summary_2025.pdf,ALLOW
+2026-04-02T14:22:09Z,anonymous,203.0.113.55,ListBucket,reports-bucket,ALLOW

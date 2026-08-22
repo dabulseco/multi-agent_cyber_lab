@@ -1,0 +1,401 @@
+timestamp,src_ip,host,uri,status,user_agent
+2026-05-02T12:45:00Z,203.0.113.74,www.campus.edu,/apply,200,Mozilla/5.0
+2026-05-02T12:46:32Z,198.51.100.2,www.campus.edu,/admissions,200,Mozilla/5.0 (Macintosh)
+2026-05-02T12:47:17Z,192.0.2.24,www.campus.edu,/apply,200,Mozilla/5.0
+2026-05-02T12:47:34Z,198.51.100.159,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T12:48:35Z,203.0.113.135,www.campus.edu,/deadlines,200,Mozilla/5.0 (iPhone)
+2026-05-02T12:48:51Z,192.0.2.52,www.campus.edu,/apply,200,Mozilla/5.0 (Android)
+2026-05-02T12:53:50Z,203.0.113.191,www.campus.edu,/apply,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T12:54:12Z,203.0.113.208,www.campus.edu,/apply,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T12:55:03Z,192.0.2.157,www.campus.edu,/deadlines,200,Mozilla/5.0
+2026-05-02T12:55:17Z,192.0.2.249,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T12:55:23Z,198.51.100.148,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T12:56:30Z,198.51.100.213,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:00:02Z,203.0.113.88,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:00:40Z,198.51.100.110,www.campus.edu,/admissions,200,Mozilla/5.0 (Android)
+2026-05-02T13:01:26Z,203.0.113.7,www.campus.edu,/admissions,200,Mozilla/5.0 (Macintosh)
+2026-05-02T13:02:59Z,203.0.113.101,www.campus.edu,/apply,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T13:04:07Z,203.0.113.28,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T13:04:35Z,203.0.113.89,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T13:04:42Z,198.51.100.214,www.campus.edu,/admissions,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T13:05:23Z,192.0.2.70,www.campus.edu,/apply,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:06:33Z,192.0.2.196,www.campus.edu,/financial-aid,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:08:29Z,192.0.2.239,www.campus.edu,/apply,200,Mozilla/5.0 (iPad)
+2026-05-02T13:09:42Z,198.51.100.190,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:09:59Z,203.0.113.194,www.campus.edu,/apply,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:10:34Z,198.51.100.148,www.campus.edu,/status,200,Mozilla/5.0 (Android)
+2026-05-02T13:10:38Z,198.51.100.57,www.campus.edu,/admissions,200,Mozilla/5.0 (Macintosh)
+2026-05-02T13:12:02Z,198.51.100.19,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:13:39Z,203.0.113.239,www.campus.edu,/admissions,200,Mozilla/5.0 (Android)
+2026-05-02T13:13:54Z,198.51.100.89,www.campus.edu,/deadlines,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T13:14:15Z,198.51.100.148,www.campus.edu,/admissions,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T13:15:50Z,198.51.100.13,www.campus.edu,/admissions,200,Mozilla/5.0 (iPad)
+2026-05-02T13:16:02Z,192.0.2.158,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:16:14Z,192.0.2.38,www.campus.edu,/status,200,Mozilla/5.0
+2026-05-02T13:16:43Z,203.0.113.161,www.campus.edu,/apply,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:17:12Z,198.51.100.100,www.campus.edu,/deadlines,200,Mozilla/5.0
+2026-05-02T13:17:27Z,198.51.100.187,www.campus.edu,/admissions,200,Mozilla/5.0 (Macintosh)
+2026-05-02T13:18:58Z,198.51.100.93,www.campus.edu,/apply,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T13:19:39Z,192.0.2.207,www.campus.edu,/deadlines,200,Mozilla/5.0 (Macintosh)
+2026-05-02T13:21:29Z,198.51.100.181,www.campus.edu,/status,200,Mozilla/5.0
+2026-05-02T13:24:05Z,192.0.2.91,www.campus.edu,/apply,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:24:09Z,198.51.100.181,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T13:24:20Z,198.51.100.45,www.campus.edu,/portal/login,200,Mozilla/5.0 (Macintosh)
+2026-05-02T13:25:14Z,192.0.2.7,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Android)
+2026-05-02T13:25:40Z,203.0.113.196,www.campus.edu,/financial-aid,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:26:17Z,192.0.2.142,www.campus.edu,/financial-aid,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:29:03Z,198.51.100.175,www.campus.edu,/status,200,Mozilla/5.0 (Android)
+2026-05-02T13:29:09Z,192.0.2.195,www.campus.edu,/portal/login,200,Mozilla/5.0 (Macintosh)
+2026-05-02T13:30:24Z,198.51.100.175,www.campus.edu,/admissions,200,Mozilla/5.0 (Android)
+2026-05-02T13:30:59Z,198.51.100.86,www.campus.edu,/deadlines,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T13:31:42Z,192.0.2.216,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Android)
+2026-05-02T13:32:41Z,203.0.113.135,www.campus.edu,/apply,200,Mozilla/5.0
+2026-05-02T13:33:13Z,203.0.113.105,www.campus.edu,/admissions,200,Mozilla/5.0 (Android)
+2026-05-02T13:33:17Z,192.0.2.176,www.campus.edu,/status,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:33:40Z,203.0.113.88,www.campus.edu,/apply,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:34:38Z,192.0.2.234,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T13:35:07Z,203.0.113.134,www.campus.edu,/apply,200,Mozilla/5.0
+2026-05-02T13:35:24Z,203.0.113.200,www.campus.edu,/status,200,Mozilla/5.0 (Android)
+2026-05-02T13:36:44Z,203.0.113.36,www.campus.edu,/status,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T13:39:17Z,203.0.113.215,www.campus.edu,/admissions,200,Mozilla/5.0 (Android)
+2026-05-02T13:39:44Z,198.51.100.156,www.campus.edu,/apply,200,Mozilla/5.0 (iPad)
+2026-05-02T13:41:11Z,203.0.113.203,www.campus.edu,/apply,200,Mozilla/5.0 (Macintosh)
+2026-05-02T13:42:59Z,203.0.113.10,www.campus.edu,/admissions,200,Mozilla/5.0 (iPad)
+2026-05-02T13:43:32Z,198.51.100.99,www.campus.edu,/apply,200,Mozilla/5.0 (Macintosh)
+2026-05-02T13:44:03Z,203.0.113.131,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Android)
+2026-05-02T13:44:07Z,198.51.100.86,www.campus.edu,/financial-aid,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:44:21Z,198.51.100.13,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T13:45:59Z,192.0.2.207,www.campus.edu,/admissions,200,Mozilla/5.0 (iPad)
+2026-05-02T13:48:08Z,203.0.113.240,www.campus.edu,/status,200,Mozilla/5.0 (Macintosh)
+2026-05-02T13:48:50Z,192.0.2.219,www.campus.edu,/status,200,Mozilla/5.0 (Macintosh)
+2026-05-02T13:49:37Z,192.0.2.95,www.campus.edu,/admissions,200,Mozilla/5.0 (Macintosh)
+2026-05-02T13:49:45Z,198.51.100.148,www.campus.edu,/apply,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T13:50:31Z,203.0.113.104,www.campus.edu,/deadlines,200,Mozilla/5.0 (Android)
+2026-05-02T13:50:35Z,192.0.2.76,www.campus.edu,/apply,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:51:04Z,203.0.113.141,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T13:51:17Z,192.0.2.234,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T13:51:46Z,203.0.113.45,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:52:35Z,198.51.100.2,www.campus.edu,/financial-aid,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:53:01Z,198.51.100.105,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:53:17Z,198.51.100.148,www.campus.edu,/deadlines,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:53:31Z,198.51.100.169,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T13:54:21Z,192.0.2.144,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T13:54:46Z,203.0.113.166,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Android)
+2026-05-02T13:58:02Z,198.51.100.12,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T13:58:04Z,203.0.113.44,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T13:58:09Z,192.0.2.87,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T13:58:15Z,198.51.100.201,www.campus.edu,/admissions,200,Mozilla/5.0 (Android)
+2026-05-02T13:58:20Z,203.0.113.19,www.campus.edu,/apply,200,Mozilla/5.0
+2026-05-02T13:58:33Z,192.0.2.150,www.campus.edu,/admissions,200,Mozilla/5.0 (iPad)
+2026-05-02T13:58:47Z,198.51.100.63,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T13:59:02Z,203.0.113.90,www.campus.edu,/apply,503,Mozilla/5.0
+2026-05-02T13:59:10Z,192.0.2.201,www.campus.edu,/admissions,503,Mozilla/5.0
+2026-05-02T13:59:18Z,198.51.100.144,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T13:59:30Z,203.0.113.77,www.campus.edu,/admissions,503,Mozilla/5.0
+2026-05-02T13:59:35Z,203.0.113.94,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T13:59:53Z,192.0.2.38,www.campus.edu,/status,200,Mozilla/5.0 (Android)
+2026-05-02T13:59:59Z,192.0.2.215,www.campus.edu,/portal/login,503,Mozilla/5.0 (Android)
+2026-05-02T14:00:03Z,192.0.2.210,www.campus.edu,/financial-aid,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:00:24Z,192.0.2.10,www.campus.edu,/admissions,200,Mozilla/5.0 (Android)
+2026-05-02T14:00:25Z,198.51.100.243,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:00:29Z,203.0.113.197,www.campus.edu,/financial-aid,503,Mozilla/5.0 (iPad)
+2026-05-02T14:00:47Z,198.51.100.143,www.campus.edu,/apply,200,Mozilla/5.0 (Android)
+2026-05-02T14:00:52Z,198.51.100.57,www.campus.edu,/financial-aid,503,Mozilla/5.0 (iPad)
+2026-05-02T14:00:57Z,203.0.113.68,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T14:01:04Z,192.0.2.63,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T14:01:16Z,198.51.100.111,www.campus.edu,/financial-aid,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:01:33Z,203.0.113.81,www.campus.edu,/apply,503,Mozilla/5.0
+2026-05-02T14:01:36Z,198.51.100.169,www.campus.edu,/financial-aid,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:01:38Z,203.0.113.20,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:01:39Z,198.51.100.181,www.campus.edu,/deadlines,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:01:47Z,198.51.100.148,www.campus.edu,/deadlines,200,Mozilla/5.0 (iPad)
+2026-05-02T14:01:49Z,192.0.2.24,www.campus.edu,/apply,200,Mozilla/5.0 (Android)
+2026-05-02T14:01:51Z,203.0.113.101,www.campus.edu,/apply,503,Mozilla/5.0 (Android)
+2026-05-02T14:01:55Z,192.0.2.189,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:01:56Z,198.51.100.209,www.campus.edu,/admissions,200,Mozilla/5.0 (Android)
+2026-05-02T14:01:57Z,192.0.2.190,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T14:01:58Z,192.0.2.183,www.campus.edu,/financial-aid,503,Mozilla/5.0 (iPad)
+2026-05-02T14:02:30Z,192.0.2.34,www.campus.edu,/admissions,200,Mozilla/5.0 (Android)
+2026-05-02T14:02:44Z,203.0.113.210,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T14:02:45Z,192.0.2.25,www.campus.edu,/portal/login,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:02:46Z,198.51.100.114,www.campus.edu,/financial-aid,503,Mozilla/5.0 (Android)
+2026-05-02T14:02:58Z,203.0.113.56,www.campus.edu,/financial-aid,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:03:11Z,192.0.2.99,www.campus.edu,/admissions,503,Mozilla/5.0 (Android)
+2026-05-02T14:03:14Z,192.0.2.38,www.campus.edu,/apply,503,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:03:15Z,203.0.113.131,www.campus.edu,/financial-aid,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:03:27Z,203.0.113.169,www.campus.edu,/apply,200,Mozilla/5.0
+2026-05-02T14:03:30Z,203.0.113.237,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T14:04:02Z,192.0.2.66,www.campus.edu,/deadlines,200,Mozilla/5.0
+2026-05-02T14:04:06Z,198.51.100.57,www.campus.edu,/admissions,500,Mozilla/5.0 (Android)
+2026-05-02T14:04:07Z,203.0.113.226,www.campus.edu,/apply,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:04:12Z,203.0.113.166,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:04:15Z,203.0.113.40,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:04:18Z,203.0.113.92,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:04:19Z,203.0.113.156,www.campus.edu,/admissions,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:04:34Z,192.0.2.38,www.campus.edu,/apply,200,Mozilla/5.0
+2026-05-02T14:04:35Z,203.0.113.108,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T14:04:49Z,198.51.100.177,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:04:51Z,192.0.2.26,www.campus.edu,/status,503,Mozilla/5.0 (Android)
+2026-05-02T14:04:55Z,192.0.2.6,www.campus.edu,/admissions,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:04:57Z,198.51.100.86,www.campus.edu,/admissions,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:05:00Z,192.0.2.72,www.campus.edu,/admissions,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:05:02Z,203.0.113.169,www.campus.edu,/apply,503,Mozilla/5.0 (Macintosh)
+2026-05-02T14:05:14Z,198.51.100.224,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Android)
+2026-05-02T14:05:22Z,192.0.2.213,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T14:05:29Z,198.51.100.156,www.campus.edu,/financial-aid,200,Mozilla/5.0 (iPad)
+2026-05-02T14:05:40Z,203.0.113.133,www.campus.edu,/portal/login,200,Mozilla/5.0
+2026-05-02T14:05:41Z,203.0.113.65,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T14:05:42Z,198.51.100.131,www.campus.edu,/admissions,503,Mozilla/5.0 (iPad)
+2026-05-02T14:05:51Z,203.0.113.151,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Android)
+2026-05-02T14:06:25Z,203.0.113.227,www.campus.edu,/apply,200,Mozilla/5.0
+2026-05-02T14:06:28Z,192.0.2.32,www.campus.edu,/admissions,200,Mozilla/5.0 (iPad)
+2026-05-02T14:06:37Z,198.51.100.166,www.campus.edu,/apply,503,Mozilla/5.0 (iPad)
+2026-05-02T14:06:38Z,192.0.2.201,www.campus.edu,/admissions,503,Mozilla/5.0 (Android)
+2026-05-02T14:06:50Z,203.0.113.198,www.campus.edu,/admissions,500,Mozilla/5.0 (iPad)
+2026-05-02T14:06:53Z,198.51.100.117,www.campus.edu,/apply,200,Mozilla/5.0 (iPad)
+2026-05-02T14:06:57Z,192.0.2.127,www.campus.edu,/portal/login,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:07:00Z,192.0.2.56,www.campus.edu,/admissions,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:07:03Z,203.0.113.239,www.campus.edu,/apply,503,Mozilla/5.0
+2026-05-02T14:07:11Z,203.0.113.236,www.campus.edu,/status,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:07:24Z,203.0.113.193,www.campus.edu,/apply,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:07:25Z,203.0.113.206,www.campus.edu,/deadlines,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:07:35Z,198.51.100.110,www.campus.edu,/apply,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:07:45Z,192.0.2.79,www.campus.edu,/financial-aid,503,Mozilla/5.0 (iPad)
+2026-05-02T14:07:49Z,192.0.2.24,www.campus.edu,/financial-aid,503,Mozilla/5.0 (Macintosh)
+2026-05-02T14:07:50Z,198.51.100.225,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T14:08:05Z,198.51.100.175,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:08:09Z,198.51.100.181,www.campus.edu,/apply,503,Mozilla/5.0 (Android)
+2026-05-02T14:08:12Z,192.0.2.103,www.campus.edu,/apply,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:08:28Z,203.0.113.101,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:08:29Z,198.51.100.148,www.campus.edu,/portal/login,200,Mozilla/5.0 (Android)
+2026-05-02T14:08:38Z,198.51.100.45,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Android)
+2026-05-02T14:08:39Z,192.0.2.238,www.campus.edu,/apply,200,Mozilla/5.0
+2026-05-02T14:08:42Z,203.0.113.62,www.campus.edu,/admissions,200,Mozilla/5.0 (Android)
+2026-05-02T14:08:45Z,198.51.100.11,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:08:49Z,198.51.100.208,www.campus.edu,/financial-aid,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:09:10Z,192.0.2.175,www.campus.edu,/financial-aid,503,Mozilla/5.0
+2026-05-02T14:09:11Z,198.51.100.230,www.campus.edu,/apply,200,Mozilla/5.0
+2026-05-02T14:09:12Z,198.51.100.102,www.campus.edu,/admissions,503,Mozilla/5.0 (Android)
+2026-05-02T14:09:24Z,198.51.100.143,www.campus.edu,/status,503,Mozilla/5.0
+2026-05-02T14:09:42Z,192.0.2.143,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Android)
+2026-05-02T14:09:48Z,192.0.2.74,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Android)
+2026-05-02T14:09:49Z,198.51.100.100,www.campus.edu,/apply,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:09:51Z,192.0.2.175,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T14:09:54Z,203.0.113.159,www.campus.edu,/financial-aid,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:09:57Z,192.0.2.91,www.campus.edu,/admissions,200,Mozilla/5.0 (Android)
+2026-05-02T14:10:15Z,198.51.100.149,www.campus.edu,/admissions,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:10:19Z,192.0.2.210,www.campus.edu,/status,200,Mozilla/5.0 (Android)
+2026-05-02T14:10:34Z,198.51.100.142,www.campus.edu,/deadlines,200,Mozilla/5.0 (Android)
+2026-05-02T14:10:52Z,192.0.2.210,www.campus.edu,/apply,503,Mozilla/5.0 (Android)
+2026-05-02T14:11:00Z,203.0.113.73,www.campus.edu,/apply,200,Mozilla/5.0
+2026-05-02T14:11:09Z,203.0.113.131,www.campus.edu,/admissions,200,Mozilla/5.0 (Android)
+2026-05-02T14:11:33Z,192.0.2.175,www.campus.edu,/admissions,503,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:11:35Z,198.51.100.2,www.campus.edu,/financial-aid,503,Mozilla/5.0
+2026-05-02T14:12:03Z,198.51.100.4,www.campus.edu,/admissions,200,Mozilla/5.0 (iPad)
+2026-05-02T14:12:05Z,192.0.2.38,www.campus.edu,/admissions,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:12:12Z,198.51.100.175,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:12:13Z,192.0.2.139,www.campus.edu,/admissions,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:12:30Z,198.51.100.203,www.campus.edu,/financial-aid,503,Mozilla/5.0
+2026-05-02T14:12:50Z,192.0.2.154,www.campus.edu,/status,503,Mozilla/5.0
+2026-05-02T14:12:58Z,198.51.100.116,www.campus.edu,/apply,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:13:03Z,192.0.2.223,www.campus.edu,/apply,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:13:10Z,192.0.2.160,www.campus.edu,/apply,200,Mozilla/5.0 (Android)
+2026-05-02T14:13:18Z,203.0.113.25,www.campus.edu,/status,503,Mozilla/5.0 (iPad)
+2026-05-02T14:13:21Z,198.51.100.230,www.campus.edu,/apply,200,Mozilla/5.0
+2026-05-02T14:13:27Z,203.0.113.65,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T14:13:28Z,192.0.2.139,www.campus.edu,/apply,503,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:13:30Z,192.0.2.220,www.campus.edu,/apply,200,Mozilla/5.0 (Android)
+2026-05-02T14:13:31Z,203.0.113.41,www.campus.edu,/financial-aid,503,Mozilla/5.0 (Macintosh)
+2026-05-02T14:13:32Z,203.0.113.210,www.campus.edu,/admissions,200,Mozilla/5.0 (Android)
+2026-05-02T14:13:33Z,198.51.100.228,www.campus.edu,/apply,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:13:38Z,198.51.100.130,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:13:59Z,198.51.100.86,www.campus.edu,/financial-aid,503,Mozilla/5.0
+2026-05-02T14:14:05Z,203.0.113.90,www.campus.edu,/admissions,503,Mozilla/5.0 (Android)
+2026-05-02T14:14:24Z,192.0.2.24,www.campus.edu,/status,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:14:39Z,198.51.100.226,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T14:14:46Z,198.51.100.86,www.campus.edu,/apply,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:15:03Z,192.0.2.233,www.campus.edu,/financial-aid,200,Mozilla/5.0 (iPad)
+2026-05-02T14:15:04Z,203.0.113.215,www.campus.edu,/apply,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:15:07Z,192.0.2.17,www.campus.edu,/admissions,503,Mozilla/5.0 (Android)
+2026-05-02T14:15:18Z,192.0.2.210,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T14:15:28Z,198.51.100.97,www.campus.edu,/status,503,Mozilla/5.0
+2026-05-02T14:15:31Z,203.0.113.235,www.campus.edu,/admissions,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:15:34Z,198.51.100.2,www.campus.edu,/apply,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:15:42Z,198.51.100.179,www.campus.edu,/portal/login,503,Mozilla/5.0 (iPad)
+2026-05-02T14:15:44Z,198.51.100.209,www.campus.edu,/admissions,503,Mozilla/5.0 (Android)
+2026-05-02T14:15:45Z,198.51.100.228,www.campus.edu,/admissions,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:16:01Z,198.51.100.120,www.campus.edu,/financial-aid,503,Mozilla/5.0 (iPad)
+2026-05-02T14:16:12Z,198.51.100.102,www.campus.edu,/financial-aid,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:16:18Z,192.0.2.198,www.campus.edu,/deadlines,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:16:27Z,203.0.113.16,www.campus.edu,/apply,503,Mozilla/5.0 (iPad)
+2026-05-02T14:16:28Z,198.51.100.20,www.campus.edu,/apply,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:16:33Z,203.0.113.214,www.campus.edu,/apply,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:16:45Z,198.51.100.45,www.campus.edu,/apply,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:16:47Z,198.51.100.135,www.campus.edu,/portal/login,200,Mozilla/5.0
+2026-05-02T14:16:48Z,198.51.100.16,www.campus.edu,/admissions,503,Mozilla/5.0
+2026-05-02T14:16:59Z,192.0.2.60,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:17:00Z,192.0.2.20,www.campus.edu,/apply,503,Mozilla/5.0 (Android)
+2026-05-02T14:17:02Z,203.0.113.159,www.campus.edu,/apply,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:17:03Z,203.0.113.209,www.campus.edu,/portal/login,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:17:17Z,203.0.113.166,www.campus.edu,/apply,200,Mozilla/5.0
+2026-05-02T14:17:24Z,198.51.100.86,www.campus.edu,/apply,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:17:28Z,192.0.2.156,www.campus.edu,/apply,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:17:41Z,203.0.113.44,www.campus.edu,/financial-aid,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:17:43Z,192.0.2.20,www.campus.edu,/admissions,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:17:44Z,198.51.100.57,www.campus.edu,/status,200,Mozilla/5.0 (iPad)
+2026-05-02T14:17:49Z,198.51.100.2,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:18:06Z,203.0.113.131,www.campus.edu,/financial-aid,503,Mozilla/5.0 (Android)
+2026-05-02T14:18:20Z,203.0.113.204,www.campus.edu,/admissions,503,Mozilla/5.0
+2026-05-02T14:18:40Z,192.0.2.210,www.campus.edu,/status,503,Mozilla/5.0 (iPad)
+2026-05-02T14:18:46Z,198.51.100.45,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Android)
+2026-05-02T14:18:49Z,192.0.2.212,www.campus.edu,/admissions,200,Mozilla/5.0 (Android)
+2026-05-02T14:18:50Z,198.51.100.101,www.campus.edu,/admissions,500,Mozilla/5.0
+2026-05-02T14:18:56Z,198.51.100.100,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T14:19:01Z,203.0.113.161,www.campus.edu,/financial-aid,503,Mozilla/5.0 (iPad)
+2026-05-02T14:19:03Z,203.0.113.233,www.campus.edu,/financial-aid,500,Mozilla/5.0 (Android)
+2026-05-02T14:19:10Z,198.51.100.249,www.campus.edu,/deadlines,200,Mozilla/5.0 (Android)
+2026-05-02T14:19:23Z,192.0.2.21,www.campus.edu,/deadlines,200,Mozilla/5.0
+2026-05-02T14:19:24Z,198.51.100.163,www.campus.edu,/admissions,503,Mozilla/5.0
+2026-05-02T14:19:45Z,203.0.113.155,www.campus.edu,/apply,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:19:48Z,198.51.100.124,www.campus.edu,/admissions,503,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:19:49Z,198.51.100.54,www.campus.edu,/admissions,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:20:04Z,198.51.100.165,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:20:09Z,192.0.2.108,www.campus.edu,/admissions,503,Mozilla/5.0 (Android)
+2026-05-02T14:20:26Z,203.0.113.243,www.campus.edu,/apply,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:20:41Z,192.0.2.27,www.campus.edu,/portal/login,200,Mozilla/5.0 (Android)
+2026-05-02T14:21:04Z,198.51.100.175,www.campus.edu,/financial-aid,503,Mozilla/5.0 (Android)
+2026-05-02T14:21:11Z,203.0.113.159,www.campus.edu,/apply,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:21:13Z,198.51.100.175,www.campus.edu,/deadlines,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:21:22Z,192.0.2.106,www.campus.edu,/admissions,500,Mozilla/5.0
+2026-05-02T14:21:23Z,192.0.2.76,www.campus.edu,/financial-aid,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:21:26Z,203.0.113.103,www.campus.edu,/admissions,503,Mozilla/5.0 (Android)
+2026-05-02T14:21:29Z,203.0.113.18,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:21:32Z,203.0.113.88,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T14:21:33Z,198.51.100.32,www.campus.edu,/apply,200,Mozilla/5.0 (Android)
+2026-05-02T14:21:36Z,203.0.113.218,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Android)
+2026-05-02T14:21:40Z,198.51.100.2,www.campus.edu,/admissions,503,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:21:57Z,203.0.113.176,www.campus.edu,/financial-aid,503,Mozilla/5.0
+2026-05-02T14:22:01Z,192.0.2.118,www.campus.edu,/admissions,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:22:03Z,192.0.2.210,www.campus.edu,/financial-aid,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:22:04Z,198.51.100.36,www.campus.edu,/deadlines,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:22:14Z,198.51.100.180,www.campus.edu,/financial-aid,503,Mozilla/5.0
+2026-05-02T14:22:22Z,198.51.100.126,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:22:24Z,198.51.100.204,www.campus.edu,/apply,200,Mozilla/5.0 (Android)
+2026-05-02T14:22:40Z,198.51.100.230,www.campus.edu,/deadlines,503,Mozilla/5.0 (Macintosh)
+2026-05-02T14:22:48Z,203.0.113.242,www.campus.edu,/admissions,200,Mozilla/5.0 (Android)
+2026-05-02T14:22:49Z,203.0.113.232,www.campus.edu,/apply,200,Mozilla/5.0 (Android)
+2026-05-02T14:22:50Z,203.0.113.39,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:22:53Z,192.0.2.157,www.campus.edu,/status,503,Mozilla/5.0 (iPad)
+2026-05-02T14:22:56Z,198.51.100.148,www.campus.edu,/financial-aid,503,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:22:57Z,203.0.113.168,www.campus.edu,/status,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:23:58Z,198.51.100.20,www.campus.edu,/admissions,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:24:01Z,203.0.113.133,www.campus.edu,/apply,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:24:09Z,198.51.100.181,www.campus.edu,/financial-aid,503,Mozilla/5.0
+2026-05-02T14:24:21Z,198.51.100.14,www.campus.edu,/financial-aid,503,Mozilla/5.0
+2026-05-02T14:24:22Z,198.51.100.12,www.campus.edu,/financial-aid,500,Mozilla/5.0 (Android)
+2026-05-02T14:24:28Z,192.0.2.175,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:24:31Z,203.0.113.173,www.campus.edu,/portal/login,200,Mozilla/5.0 (Android)
+2026-05-02T14:24:32Z,203.0.113.141,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T14:24:36Z,192.0.2.221,www.campus.edu,/financial-aid,503,Mozilla/5.0 (Android)
+2026-05-02T14:24:41Z,203.0.113.237,www.campus.edu,/portal/login,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:24:42Z,192.0.2.19,www.campus.edu,/deadlines,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:24:44Z,198.51.100.73,www.campus.edu,/admissions,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:25:18Z,192.0.2.165,www.campus.edu,/admissions,200,Mozilla/5.0 (Android)
+2026-05-02T14:25:22Z,198.51.100.29,www.campus.edu,/status,503,Mozilla/5.0 (iPad)
+2026-05-02T14:25:25Z,198.51.100.212,www.campus.edu,/apply,503,Mozilla/5.0
+2026-05-02T14:25:26Z,198.51.100.129,www.campus.edu,/admissions,503,Mozilla/5.0
+2026-05-02T14:25:27Z,192.0.2.29,www.campus.edu,/deadlines,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:25:28Z,198.51.100.4,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:25:32Z,198.51.100.46,www.campus.edu,/admissions,503,Mozilla/5.0 (Android)
+2026-05-02T14:25:50Z,192.0.2.223,www.campus.edu,/status,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:25:51Z,198.51.100.205,www.campus.edu,/status,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:26:00Z,203.0.113.161,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Android)
+2026-05-02T14:26:05Z,203.0.113.19,www.campus.edu,/portal/login,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:26:09Z,203.0.113.146,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T14:26:10Z,192.0.2.96,www.campus.edu,/financial-aid,503,Mozilla/5.0 (iPad)
+2026-05-02T14:26:19Z,192.0.2.79,www.campus.edu,/admissions,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:26:31Z,192.0.2.28,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:26:48Z,203.0.113.20,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:27:12Z,198.51.100.178,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:27:18Z,192.0.2.123,www.campus.edu,/admissions,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:27:20Z,192.0.2.75,www.campus.edu,/admissions,200,Mozilla/5.0 (Android)
+2026-05-02T14:27:24Z,203.0.113.239,www.campus.edu,/admissions,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:27:29Z,198.51.100.98,www.campus.edu,/apply,200,Mozilla/5.0 (Android)
+2026-05-02T14:27:35Z,198.51.100.53,www.campus.edu,/admissions,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:27:38Z,203.0.113.159,www.campus.edu,/apply,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:27:41Z,198.51.100.181,www.campus.edu,/apply,503,Mozilla/5.0 (Android)
+2026-05-02T14:27:49Z,192.0.2.154,www.campus.edu,/admissions,200,Mozilla/5.0 (iPad)
+2026-05-02T14:27:54Z,203.0.113.3,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:27:57Z,203.0.113.243,www.campus.edu,/admissions,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:27:58Z,192.0.2.76,www.campus.edu,/admissions,503,Mozilla/5.0 (iPad)
+2026-05-02T14:27:59Z,203.0.113.215,www.campus.edu,/apply,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:28:13Z,192.0.2.154,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T14:28:17Z,198.51.100.86,www.campus.edu,/status,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:28:18Z,203.0.113.114,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:28:31Z,198.51.100.209,www.campus.edu,/portal/login,503,Mozilla/5.0
+2026-05-02T14:28:35Z,192.0.2.141,www.campus.edu,/status,503,Mozilla/5.0 (Android)
+2026-05-02T14:28:43Z,198.51.100.2,www.campus.edu,/portal/login,503,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:28:45Z,203.0.113.159,www.campus.edu,/deadlines,503,Mozilla/5.0
+2026-05-02T14:28:56Z,203.0.113.6,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T14:29:00Z,198.51.100.235,www.campus.edu,/apply,503,Mozilla/5.0
+2026-05-02T14:29:01Z,198.51.100.213,www.campus.edu,/portal/login,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:29:21Z,198.51.100.99,www.campus.edu,/apply,200,Mozilla/5.0 (Android)
+2026-05-02T14:29:28Z,198.51.100.219,www.campus.edu,/financial-aid,503,Mozilla/5.0
+2026-05-02T14:29:29Z,192.0.2.234,www.campus.edu,/apply,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:29:51Z,192.0.2.36,www.campus.edu,/apply,503,Mozilla/5.0
+2026-05-02T14:29:52Z,203.0.113.50,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:29:54Z,203.0.113.112,www.campus.edu,/admissions,503,Mozilla/5.0 (Android)
+2026-05-02T14:29:55Z,198.51.100.100,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T14:30:03Z,203.0.113.218,www.campus.edu,/deadlines,200,Mozilla/5.0
+2026-05-02T14:30:13Z,192.0.2.123,www.campus.edu,/admissions,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:30:37Z,198.51.100.38,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T14:30:42Z,198.51.100.57,www.campus.edu,/admissions,200,Mozilla/5.0 (Android)
+2026-05-02T14:30:47Z,192.0.2.46,www.campus.edu,/admissions,503,Mozilla/5.0 (iPad)
+2026-05-02T14:30:48Z,192.0.2.7,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T14:30:59Z,192.0.2.52,www.campus.edu,/status,200,Mozilla/5.0
+2026-05-02T14:31:03Z,192.0.2.52,www.campus.edu,/apply,500,Mozilla/5.0
+2026-05-02T14:31:07Z,192.0.2.174,www.campus.edu,/admissions,503,Mozilla/5.0
+2026-05-02T14:31:10Z,203.0.113.52,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:31:28Z,198.51.100.87,www.campus.edu,/apply,200,Mozilla/5.0
+2026-05-02T14:31:37Z,203.0.113.131,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:31:43Z,198.51.100.39,www.campus.edu,/admissions,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:32:13Z,192.0.2.54,www.campus.edu,/admissions,500,Mozilla/5.0 (Android)
+2026-05-02T14:32:14Z,192.0.2.23,www.campus.edu,/deadlines,200,Mozilla/5.0 (iPad)
+2026-05-02T14:32:34Z,192.0.2.11,www.campus.edu,/admissions,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:33:10Z,192.0.2.38,www.campus.edu,/portal/login,200,Mozilla/5.0 (Android)
+2026-05-02T14:33:27Z,192.0.2.238,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T14:33:28Z,203.0.113.239,www.campus.edu,/financial-aid,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:33:31Z,198.51.100.148,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T14:33:36Z,192.0.2.186,www.campus.edu,/financial-aid,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:33:45Z,203.0.113.224,www.campus.edu,/financial-aid,503,Mozilla/5.0
+2026-05-02T14:33:46Z,198.51.100.100,www.campus.edu,/admissions,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:33:51Z,198.51.100.162,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T14:33:55Z,203.0.113.39,www.campus.edu,/financial-aid,503,Mozilla/5.0 (iPad)
+2026-05-02T14:34:10Z,192.0.2.190,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T14:34:11Z,203.0.113.166,www.campus.edu,/admissions,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:34:19Z,198.51.100.201,www.campus.edu,/deadlines,200,Mozilla/5.0
+2026-05-02T14:34:36Z,192.0.2.105,www.campus.edu,/financial-aid,200,Mozilla/5.0
+2026-05-02T14:34:37Z,198.51.100.148,www.campus.edu,/status,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:34:56Z,203.0.113.137,www.campus.edu,/status,503,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:35:00Z,192.0.2.243,www.campus.edu,/admissions,503,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:35:01Z,198.51.100.105,www.campus.edu,/apply,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:35:03Z,192.0.2.22,www.campus.edu,/admissions,503,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:35:34Z,192.0.2.112,www.campus.edu,/deadlines,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:35:50Z,198.51.100.37,www.campus.edu,/financial-aid,200,Mozilla/5.0 (Android)
+2026-05-02T14:36:00Z,198.51.100.184,www.campus.edu,/admissions,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:36:10Z,198.51.100.97,www.campus.edu,/admissions,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:36:14Z,192.0.2.238,www.campus.edu,/financial-aid,503,Mozilla/5.0 (iPhone)
+2026-05-02T14:36:22Z,192.0.2.76,www.campus.edu,/admissions,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:36:32Z,198.51.100.148,www.campus.edu,/apply,503,Mozilla/5.0
+2026-05-02T14:36:38Z,192.0.2.42,www.campus.edu,/apply,503,Mozilla/5.0 (Android)
+2026-05-02T14:36:39Z,198.51.100.2,www.campus.edu,/admissions,503,Mozilla/5.0
+2026-05-02T14:36:40Z,192.0.2.14,www.campus.edu,/admissions,200,Mozilla/5.0
+2026-05-02T14:36:58Z,203.0.113.114,www.campus.edu,/admissions,200,Mozilla/5.0 (Android)
+2026-05-02T14:37:01Z,192.0.2.31,www.campus.edu,/financial-aid,503,Mozilla/5.0 (Macintosh)
+2026-05-02T14:37:02Z,198.51.100.110,www.campus.edu,/financial-aid,200,Mozilla/5.0 (iPhone)
+2026-05-02T14:37:06Z,198.51.100.20,www.campus.edu,/admissions,503,Mozilla/5.0 (iPad)
+2026-05-02T14:37:19Z,198.51.100.7,www.campus.edu,/status,200,Mozilla/5.0 (Macintosh)
+2026-05-02T14:37:21Z,192.0.2.234,www.campus.edu,/admissions,503,Mozilla/5.0 (iPad)
+2026-05-02T14:37:49Z,203.0.113.8,www.campus.edu,/admissions,200,Mozilla/5.0 (Windows NT 10.0)
+2026-05-02T14:37:50Z,192.0.2.120,www.campus.edu,/portal/login,200,Mozilla/5.0
+2026-05-02T14:37:56Z,203.0.113.95,www.campus.edu,/status,503,Mozilla/5.0 (iPad)

@@ -1,8 +1,8 @@
 .env
 __pycache__/
 *.pyc
-.chromadb/
-.tmp_uploads/
-exports/
-logs/
+/.chromadb/
+/.tmp_uploads/
+/exports/
+/logs/
 .DS_Store
