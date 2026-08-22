@@ -63,6 +63,13 @@ This project is intentionally **local-first**. It is designed for instructional 
    streamlit run app/main.py
    ```
 
+## Documentation
+
+Two manuals ship with the lab, each in markdown (for reading online) and Word (for printing or handing out):
+
+- **[Instructor Manual](instructor_manual.md)** — deployment, classroom flow, per-scenario teaching notes for all 12 scenarios, assessment rubric, and a technical reference covering the execution modes, RAG pipeline, walkthrough step sequence, export formats, and interaction log schema.
+- **[Student Manual](student_manual.md)** — getting started, a page-by-page tour, the recommended lab workflow, deliverables, the scenario catalogue, and a section on how these agents fail and what to look for.
+
 ## Suggested teaching workflow
 
 1. Instructor selects a scenario
@@ -90,6 +97,7 @@ This project is intentionally **local-first**. It is designed for instructional 
 - `data/logs/`, `data/phishing/`, `data/configs/`, `data/evidence/` — supporting datasets
 - `kb/` — knowledge-base documents for local RAG
 - `labs/` — lab handouts aligned to the simulation environment
+- `instructor_manual.md` / `student_manual.md` — full course manuals, readable directly on GitHub (`.docx` versions of both are also included for printing and distribution)
 - `.streamlit/config.toml` — disables Streamlit's file watcher (avoids reload churn during long runs)
 
 ## Setup notes
