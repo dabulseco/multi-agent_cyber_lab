@@ -95,6 +95,7 @@ This project is intentionally **local-first**. It is designed for instructional 
 ## Setup notes
 
 - Tested against a conda env with `requirements.txt` installed (Python 3.11); see the setup steps above.
+- `requirements.txt` pins exact versions of the direct dependencies to what that env runs, so a fresh clone gets the same stack. Transitive packages are left to resolve normally.
 - `.env` (not committed) should contain `CREWAI_TRACING_ENABLED=false`; `OLLAMA_URL`/`OLLAMA_TIMEOUT_S` are also read from environment if you need to point at a non-default Ollama host.
 
 ## Notes on current libraries

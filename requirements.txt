@@ -1,10 +1,15 @@
-streamlit>=1.44
-pandas>=2.2
-requests>=2.32
-chromadb>=1.5.8
-pypdf>=5.0
-python-docx>=1.1
-crewai>=0.102.0
-tabulate>=0.9.0
-python-dotenv>=1.0
-markdown>=3.5
+# Pinned to the versions this app is tested against (Python 3.11).
+# Direct dependencies only — transitive packages resolve normally, so the
+# install stays portable across platforms. To refresh after upgrading, run:
+#   python -c "from importlib.metadata import version; [print(f'{p}=={version(p)}') for p in ('streamlit','pandas','requests','chromadb','pypdf','python-docx','crewai','tabulate','python-dotenv','markdown')]"
+
+streamlit==1.57.0
+pandas==3.0.2
+requests==2.33.1
+chromadb==1.5.8
+pypdf==6.10.2
+python-docx==1.2.0
+crewai==0.193.2
+tabulate==0.10.0
+python-dotenv==1.2.2
+markdown==3.10.3
